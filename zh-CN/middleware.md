@@ -90,8 +90,3 @@ func AuthMiddleware() gin.HandlerFunc {
     }
 }
 ```
-
-## 下一步
-
-- [配置管理](./configuration.md) — 多环境 YAML 配置
-- [模板集](./template-sets.md) — 创建自定义代码生成模板

@@ -90,8 +90,3 @@ func AuthMiddleware() gin.HandlerFunc {
     }
 }
 ```
-
-## What's Next
-
-- [Configuration](./configuration.md) — Multi-environment YAML config
-- [Template Sets](./template-sets.md) — Create custom code generation templates

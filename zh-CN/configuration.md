@@ -83,4 +83,3 @@ fmt.Println(cfg.DatabaseConfig.GetDefaultDriver().DSN)
 ## 下一步
 
 - [中间件](./middleware.md) — 内置中间件与自定义扩展
-- [模板集](./template-sets.md) — 创建自定义代码生成模板

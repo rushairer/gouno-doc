@@ -83,4 +83,3 @@ fmt.Println(cfg.DatabaseConfig.GetDefaultDriver().DSN)
 ## What's Next
 
 - [Middleware](./middleware.md) — Built-in and custom middleware
-- [Template Sets](./template-sets.md) — Create custom code generation templates
