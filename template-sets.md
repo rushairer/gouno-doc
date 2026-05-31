@@ -4,8 +4,6 @@
 
 Template sets are the extension mechanism for gouno's code generator. They let you customize what `gouno gen` produces without modifying gouno's source code.
 
-A template set is a directory containing `.tmpl` files. Each file is a Go `text/template` used to generate one type of code (domain, repository, service, etc.).
-
 ## Use an Existing Template Set
 
 ### Install
@@ -60,46 +58,58 @@ gouno-cli template install gorm <url> --force  # Overwrite existing
 
 ## Create a Custom Template Set
 
-### Step 1: Create the Directory Structure
+### Step 1: Understand the File Structure
 
-```bash
-mkdir my-template-set
-cd my-template-set
+A template set repository has two parts:
+
+1. **`templates/` directory** — contains the `.tmpl` files (the actual template set)
+2. **Project scaffold** — the rest of the repo (cmd/, config/, etc.) used when `gouno-cli new` creates a project from this template
+
+Look at [gouno-template](https://github.com/rushairer/gouno-template) as the reference:
+
+```
+gouno-template/                  ← The repo IS the template set + project scaffold
+├── templates/                   ← Template set: .tmpl files live here
+│   ├── domain.tmpl
+│   ├── repository.tmpl
+│   ├── service.tmpl
+│   ├── controller.tmpl
+│   └── task.tmpl
+├── cmd/                         ← Project scaffold
+│   ├── main.go
+│   └── gouno/
+├── config/                      ← Project scaffold
+├── internal/                    ← Project scaffold
+├── Makefile
+└── go.mod
 ```
 
-Create the five template files:
+When you run `gouno-cli template install gorm /path/to/gouno-template`, only the **contents of `templates/`** are copied to `~/.gouno/templates/gorm/`. The project scaffold is not included.
+
+If your template set is **only** templates (no project scaffold), you can put `.tmpl` files directly in the `templates/` directory:
 
 ```
 my-template-set/
-├── domain.tmpl
-├── repository.tmpl
-├── service.tmpl
-├── controller.tmpl
-└── task.tmpl
+└── templates/
+    ├── domain.tmpl
+    ├── repository.tmpl
+    ├── service.tmpl
+    ├── controller.tmpl
+    └── task.tmpl
 ```
 
-You don't need all five. Only create the ones you want to customize. Missing files will fall back to the built-in default templates.
+### Step 2: Create the Templates
 
-### Step 2: Write the Templates
-
-Each `.tmpl` file is a Go `text/template`. Use `%s` as the placeholder for the struct name (it appears 5 times in each template).
-
-**Minimal example — `domain.tmpl`:**
-
-```
-package domain
-
-type %s struct {
-    ID   uint   `json:"id"`
-    Name string `json:"name"`
-}
-
-func New%s() *%s {
-    return &%s{}
-}
+```bash
+mkdir -p my-template-set/templates
+cd my-template-set/templates
 ```
 
-**With GORM — `domain.tmpl`:**
+Create the five template files. You don't need all five — missing files fall back to built-in defaults.
+
+Each `.tmpl` file uses `%s` as the struct name placeholder (5 occurrences per file).
+
+**`domain.tmpl` — with GORM:**
 
 ```
 package domain
@@ -118,7 +128,24 @@ func New%s() *%s {
 }
 ```
 
-**With interfaces — `service.tmpl`:**
+**`repository.tmpl` — with interfaces:**
+
+```
+package repository
+
+import "context"
+
+type %sRepository interface {
+    FindByID(ctx context.Context, id uint) (*domain.%s, error)
+    Create(ctx context.Context, entity *domain.%s) error
+}
+
+func New%sRepository() %sRepository {
+    return nil
+}
+```
+
+**`service.tmpl` — with interfaces:**
 
 ```
 package service
@@ -146,24 +173,7 @@ func (s *%sServiceImpl) Create(ctx context.Context, entity *domain.%s) error {
 }
 ```
 
-**With interfaces — `repository.tmpl`:**
-
-```
-package repository
-
-import "context"
-
-type %sRepository interface {
-    FindByID(ctx context.Context, id uint) (*domain.%s, error)
-    Create(ctx context.Context, entity *domain.%s) error
-}
-
-func New%sRepository() %sRepository {
-    return nil
-}
-```
-
-**Gin controller — `controller.tmpl`:**
+**`controller.tmpl` — Gin handlers:**
 
 ```
 package controller
@@ -194,7 +204,7 @@ func (c *%sController) Create(ctx *gin.Context) {
 }
 ```
 
-**Background task — `task.tmpl`:**
+**`task.tmpl` — background task:**
 
 ```
 package task
@@ -209,70 +219,51 @@ func New%sTask() *%sTask {
 }
 
 func (t *%sTask) Run(ctx context.Context) error {
-    // TODO: implement
     return nil
 }
 ```
 
 ### Template Variable Reference
 
-The `%s` placeholder is replaced with the CamelCase version of the name you pass to `gouno gen`:
+`%s` is replaced with the CamelCase version of the name you pass to `gouno gen`:
 
 | Command | `%s` becomes |
 |---------|-------------|
 | `gouno gen suite user` | `User` |
 | `gouno gen suite foo_bar` | `FooBar` |
 | `gouno gen suite my_order` | `MyOrder` |
-| `gouno gen suite sendEmail` | `SendEmail` |
 
-The placeholder appears **5 times** in each template (this is the convention for the struct name, constructor, and receiver).
+The placeholder appears **5 times** in each template (struct name, constructor, receiver, etc.).
 
 ### Step 3: Test Locally
 
-Install your template set from the local directory:
-
 ```bash
-gouno-cli template install my-set /path/to/my-template-set
-```
+# Install from local directory
+gouno-cli template install my-set /path/to/my-template-set/templates
 
-Create a test project:
-
-```bash
+# Create a test project
 gouno-cli new test-project --template-set my-set -m github.com/test/test-project
-cd test-project
-go mod tidy
-```
+cd test-project && go mod tidy
 
-Generate code and verify:
-
-```bash
+# Generate and verify
 gouno gen suite user
-cat internal/domain/user.go     # Check the generated domain
-cat internal/service/user.go    # Check the generated service
-go build ./...                  # Verify it compiles
+cat internal/domain/user.go     # Check generated domain
+cat internal/service/user.go    # Check generated service
+go build ./...                  # Verify compilation
 ```
 
-If something is wrong, edit the `.tmpl` files and reinstall:
-
-```bash
-gouno-cli template install my-set /path/to/my-template-set --force
-gouno gen suite user --force    # Regenerate with updated templates
-```
+Iterate: edit `.tmpl` → reinstall with `--force` → regenerate with `--force`.
 
 ### Step 4: Publish
 
-Push your template set to a git repository:
-
 ```bash
 cd my-template-set
-git init
-git add .
-git commit -m "initial template set"
+git init && git add . && git commit -m "initial template set"
 git remote add origin https://github.com/myorg/my-template-set
 git push -u origin main
 ```
 
-Others can install it with:
+Others install with one command:
 
 ```bash
 gouno-cli template install my-set https://github.com/myorg/my-template-set
@@ -280,7 +271,7 @@ gouno-cli template install my-set https://github.com/myorg/my-template-set
 
 ### Naming Convention
 
-Template set names are arbitrary. Use a name that describes the tech stack or style:
+Use a name that describes the tech stack or style:
 
 ```
 gorm            — GORM-based data access
@@ -299,7 +290,7 @@ my-company      — Company internal conventions
 | `controller.tmpl` | `gouno gen controller` | `controller/` |
 | `task.tmpl` | `gouno gen task` | `internal/task/` |
 
-When you run `gouno gen suite <name>`, it generates domain + repository + service using their respective templates.
+`gouno gen suite <name>` generates domain + repository + service using their respective templates.
 
 ## FAQ
 
@@ -309,7 +300,7 @@ A: gouno falls back to the built-in default template for that type. You only nee
 
 **Q: Can I use Go template syntax (`{{.Field}}`) in `.tmpl` files?**
 
-A: No. The templates use `fmt.Sprintf` with `%s`, not Go's `text/template` engine. This is because Go code naturally contains `{{` and `}}` (e.g., map literals), which would conflict with template parsing.
+A: No. The templates use `fmt.Sprintf` with `%s`, not Go's `text/template` engine. Go code naturally contains `{{` and `}}` (e.g., map literals), which would conflict with template parsing.
 
 **Q: Where are template sets stored?**
 
@@ -317,4 +308,9 @@ A: `~/.gouno/templates/<name>/`. Each template set is a directory containing `.t
 
 **Q: Can I have project-specific templates?**
 
-A: Not directly. The `.gouno.yaml` file only stores the template set name. The actual templates live in `~/.gouno/templates/`. If you need project-specific templates, create a template set for that project.
+A: Not directly. The `.gouno.yaml` file only stores the template set name. The actual templates live in `~/.gouno/templates/`. If you need project-specific templates, create a dedicated template set.
+
+## What's Next
+
+- [Configuration](./configuration.md) — Multi-environment YAML config
+- [Middleware](./middleware.md) — Built-in and custom middleware

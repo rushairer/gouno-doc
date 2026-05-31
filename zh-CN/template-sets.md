@@ -4,8 +4,6 @@
 
 模板集是 gouno 代码生成器的扩展机制。它让你自定义 `gouno gen` 的输出，无需修改 gouno 源码。
 
-模板集就是一个包含 `.tmpl` 文件的目录。每个文件是一个 Go `text/template`，用于生成一种类型的代码（domain、repository、service 等）。
-
 ## 使用已有模板集
 
 ### 安装
@@ -60,46 +58,58 @@ gouno-cli template install gorm <url> --force  # 覆盖已有模板集
 
 ## 创建自定义模板集
 
-### 第一步：创建目录结构
+### 第一步：理解文件结构
 
-```bash
-mkdir my-template-set
-cd my-template-set
+一个模板集仓库由两部分组成：
+
+1. **`templates/` 目录** — 包含 `.tmpl` 文件（真正的模板集）
+2. **项目脚手架** — 仓库的其余部分（cmd/、config/ 等），用于 `gouno-cli new` 创建项目时的模板
+
+参考 [gouno-template](https://github.com/rushairer/gouno-template) 的结构：
+
+```
+gouno-template/                  ← 仓库 = 模板集 + 项目脚手架
+├── templates/                   ← 模板集：.tmpl 文件放在这里
+│   ├── domain.tmpl
+│   ├── repository.tmpl
+│   ├── service.tmpl
+│   ├── controller.tmpl
+│   └── task.tmpl
+├── cmd/                         ← 项目脚手架
+│   ├── main.go
+│   └── gouno/
+├── config/                      ← 项目脚手架
+├── internal/                    ← 项目脚手架
+├── Makefile
+└── go.mod
 ```
 
-创建五个模板文件：
+执行 `gouno-cli template install gorm /path/to/gouno-template` 时，**只有 `templates/` 里的内容**会被复制到 `~/.gouno/templates/gorm/`。项目脚手架不会被包含。
+
+如果你的模板集**只有模板**（没有项目脚手架），直接把 `.tmpl` 文件放在 `templates/` 目录下即可：
 
 ```
 my-template-set/
-├── domain.tmpl
-├── repository.tmpl
-├── service.tmpl
-├── controller.tmpl
-└── task.tmpl
+└── templates/
+    ├── domain.tmpl
+    ├── repository.tmpl
+    ├── service.tmpl
+    ├── controller.tmpl
+    └── task.tmpl
 ```
-
-不需要全部创建。只创建你想自定义的类型，缺失的文件会自动使用内置默认模板。
 
 ### 第二步：编写模板
 
-每个 `.tmpl` 文件是一个 Go `text/template`。使用 `%s` 作为结构体名占位符（每个模板中出现 5 次）。
-
-**最简示例 — `domain.tmpl`：**
-
-```
-package domain
-
-type %s struct {
-    ID   uint   `json:"id"`
-    Name string `json:"name"`
-}
-
-func New%s() *%s {
-    return &%s{}
-}
+```bash
+mkdir -p my-template-set/templates
+cd my-template-set/templates
 ```
 
-**带 GORM — `domain.tmpl`：**
+创建五个模板文件。不需要全部创建——缺失的文件会自动使用内置默认模板。
+
+每个 `.tmpl` 文件使用 `%s` 作为结构体名占位符（每个文件出现 5 次）。
+
+**`domain.tmpl` — 带 GORM：**
 
 ```
 package domain
@@ -118,7 +128,24 @@ func New%s() *%s {
 }
 ```
 
-**带接口定义 — `service.tmpl`：**
+**`repository.tmpl` — 带接口定义：**
+
+```
+package repository
+
+import "context"
+
+type %sRepository interface {
+    FindByID(ctx context.Context, id uint) (*domain.%s, error)
+    Create(ctx context.Context, entity *domain.%s) error
+}
+
+func New%sRepository() %sRepository {
+    return nil
+}
+```
+
+**`service.tmpl` — 带接口定义：**
 
 ```
 package service
@@ -146,24 +173,7 @@ func (s *%sServiceImpl) Create(ctx context.Context, entity *domain.%s) error {
 }
 ```
 
-**带接口定义 — `repository.tmpl`：**
-
-```
-package repository
-
-import "context"
-
-type %sRepository interface {
-    FindByID(ctx context.Context, id uint) (*domain.%s, error)
-    Create(ctx context.Context, entity *domain.%s) error
-}
-
-func New%sRepository() %sRepository {
-    return nil
-}
-```
-
-**Gin 控制器 — `controller.tmpl`：**
+**`controller.tmpl` — Gin 处理器：**
 
 ```
 package controller
@@ -194,7 +204,7 @@ func (c *%sController) Create(ctx *gin.Context) {
 }
 ```
 
-**后台任务 — `task.tmpl`：**
+**`task.tmpl` — 后台任务：**
 
 ```
 package task
@@ -209,7 +219,6 @@ func New%sTask() *%sTask {
 }
 
 func (t *%sTask) Run(ctx context.Context) error {
-    // TODO: 实现任务逻辑
     return nil
 }
 ```
@@ -223,56 +232,38 @@ func (t *%sTask) Run(ctx context.Context) error {
 | `gouno gen suite user` | `User` |
 | `gouno gen suite foo_bar` | `FooBar` |
 | `gouno gen suite my_order` | `MyOrder` |
-| `gouno gen suite sendEmail` | `SendEmail` |
 
 每个模板中 `%s` 出现 **5 次**（结构体名、构造函数、接收者等）。
 
 ### 第三步：本地测试
 
-从本地目录安装模板集：
-
 ```bash
-gouno-cli template install my-set /path/to/my-template-set
-```
+# 从本地目录安装
+gouno-cli template install my-set /path/to/my-template-set/templates
 
-创建测试项目：
-
-```bash
+# 创建测试项目
 gouno-cli new test-project --template-set my-set -m github.com/test/test-project
-cd test-project
-go mod tidy
-```
+cd test-project && go mod tidy
 
-生成代码并验证：
-
-```bash
+# 生成并验证
 gouno gen suite user
 cat internal/domain/user.go     # 检查生成的 domain
 cat internal/service/user.go    # 检查生成的 service
 go build ./...                  # 验证编译通过
 ```
 
-如果有问题，修改 `.tmpl` 文件后重新安装：
-
-```bash
-gouno-cli template install my-set /path/to/my-template-set --force
-gouno gen suite user --force    # 用更新后的模板重新生成
-```
+迭代流程：修改 `.tmpl` → `--force` 重新安装 → `--force` 重新生成。
 
 ### 第四步：发布
 
-将模板集推送到 git 仓库：
-
 ```bash
 cd my-template-set
-git init
-git add .
-git commit -m "initial template set"
+git init && git add . && git commit -m "initial template set"
 git remote add origin https://github.com/myorg/my-template-set
 git push -u origin main
 ```
 
-其他人可以一条命令安装：
+其他人一条命令安装：
 
 ```bash
 gouno-cli template install my-set https://github.com/myorg/my-template-set
@@ -280,7 +271,7 @@ gouno-cli template install my-set https://github.com/myorg/my-template-set
 
 ### 命名建议
 
-模板集名称是任意的，建议用描述技术栈或风格的名称：
+用描述技术栈或风格的名称：
 
 ```
 gorm            — 基于 GORM 的数据访问
@@ -299,7 +290,7 @@ my-company      — 公司内部规范
 | `controller.tmpl` | `gouno gen controller` | `controller/` |
 | `task.tmpl` | `gouno gen task` | `internal/task/` |
 
-执行 `gouno gen suite <name>` 时，会依次使用 domain、repository、service 三个模板生成文件。
+`gouno gen suite <name>` 会依次使用 domain、repository、service 三个模板生成文件。
 
 ## 常见问题
 
@@ -309,7 +300,7 @@ A: gouno 会自动使用内置默认模板。你只需创建想自定义的类�
 
 **Q: 能在 `.tmpl` 文件中使用 Go 模板语法（`{{.Field}}`）吗？**
 
-A: 不能。模板使用 `fmt.Sprintf` 和 `%s`，不是 Go 的 `text/template` 引擎。因为 Go 代码中天然包含 `{{` 和 `}}`（如 map 字面量），会与模板解析冲突。
+A: 不能。模板使用 `fmt.Sprintf` 和 `%s`，不是 Go 的 `text/template` 引擎。Go 代码中天然包含 `{{` 和 `}}`（如 map 字面量），会与模板解析冲突。
 
 **Q: 模板集存储在哪里？**
 
@@ -318,3 +309,8 @@ A: `~/.gouno/templates/<name>/`。每个模板集是一个包含 `.tmpl` 文件�
 **Q: 可以有项目专属的模板吗？**
 
 A: 不直接支持。`.gouno.yaml` 只存储模板集名称，实际模板在 `~/.gouno/templates/` 中。如果需要项目专属模板，可以为该项目创建一个模板集。
+
+## 下一步
+
+- [配置管理](./configuration.md) — 多环境 YAML 配置
+- [中间件](./middleware.md) — 内置中间件与自定义扩展
