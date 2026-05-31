@@ -313,4 +313,3 @@ A: 不直接支持。`.gouno.yaml` 只存储模板集名称，实际模板在 `~
 ## 下一步
 
 - [配置管理](./configuration.md) — 多环境 YAML 配置
-- [中间件](./middleware.md) — 内置中间件与自定义扩展

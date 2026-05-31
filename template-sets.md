@@ -313,4 +313,3 @@ A: Not directly. The `.gouno.yaml` file only stores the template set name. The a
 ## What's Next
 
 - [Configuration](./configuration.md) — Multi-environment YAML config
-- [Middleware](./middleware.md) — Built-in and custom middleware

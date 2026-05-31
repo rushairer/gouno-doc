@@ -81,5 +81,3 @@ Flags:
 ## What's Next
 
 - [Code Generation](./code-generation.md) — Generate DDD modules
-- [Template Sets](./template-sets.md) — Customize code generation templates
-- [Configuration](./configuration.md) — Multi-environment config

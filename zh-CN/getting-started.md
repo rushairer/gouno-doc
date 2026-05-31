@@ -81,5 +81,3 @@ my-service web [flags]
 ## 下一步
 
 - [代码生成](./code-generation.md) — 生成 DDD 模块
-- [模板集](./template-sets.md) — 自定义代码生成模板
-- [配置管理](./configuration.md) — 多环境配置
