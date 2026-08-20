@@ -25,19 +25,19 @@ gouno-cli --help
 gouno-cli new my-service -m github.com/you/my-service
 ```
 
-从默认模板创建一个新的 Go Web 项目。可选参数：
+从默认模板（`gouno-template`）创建一个新的 Go Web 项目。可选参数：
 
-| 参数 | 说明 | 默认值 |
-|------|------|--------|
-| `-m, --module` | Go module 路径 | 与项目名相同 |
-| `-t, --template` | 模板来源（git URL 或本地路径） | 从 GitHub 克隆 gouno-template |
-| `--template-set` | 代码生成使用的模板集 | （使用内置默认模板） |
+| 参数 | 缩写 | 默认值 | 说明 |
+|------|------|--------|------|
+| `--module` | `-m` | 项目名称 | Go module 路径（例如 `github.com/you/my-service`） |
+| `--template` | `-t` | `./templates` | 模板来源（Git 仓库 URL 或本地目录路径，默认从 GitHub 克隆 gouno-template） |
+| `--skip-tidy` | | `false` | 创建项目后跳过执行 `go mod tidy` |
 
-使用自定义模板集创建项目：
+使用自定义模板仓库创建项目：
 
 ```bash
 gouno-cli new order-service \
-  --template-set gorm \
+  -t https://github.com/myorg/custom-gouno-template \
   -m github.com/myorg/order-service
 ```
 
@@ -45,7 +45,6 @@ gouno-cli new order-service \
 
 ```bash
 cd my-service
-go mod tidy
 make build
 make run
 ```

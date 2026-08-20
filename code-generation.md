@@ -27,7 +27,7 @@ internal/
 gouno gen domain order              # → internal/domain/order.go
 gouno gen repository order          # → internal/repository/order.go
 gouno gen service order             # → internal/service/order.go
-gouno gen controller order          # → controller/order.go
+gouno gen controller order          # → internal/controller/order.go
 gouno gen task send_email           # → internal/task/send_email.go
 ```
 
@@ -49,7 +49,6 @@ Every generation command supports:
 |------|-------------|---------|
 | `--path, -p` | Output directory | Depends on type (see below) |
 | `--force, -f` | Overwrite existing files | false |
-| `--template-set` | Template set to use | From .gouno.yaml or built-in |
 
 Default output paths:
 
@@ -58,7 +57,7 @@ Default output paths:
 | domain | `internal/domain/` |
 | repository | `internal/repository/` |
 | service | `internal/service/` |
-| controller | `controller/` |
+| controller | `internal/controller/` |
 | task | `internal/task/` |
 
 ## Examples
@@ -69,9 +68,6 @@ gouno gen suite user --path ./pkg/user
 
 # Force overwrite existing files
 gouno gen suite user --force
-
-# Use a specific template set
-gouno gen suite user --template-set gorm
 
 # Generate only the domain entity
 gouno gen domain product
@@ -89,4 +85,6 @@ gouno gen suite user       # → struct User, UserService, UserRepository
 
 ## What's Next
 
-- [Template Sets](./template-sets.md) — Customize the generated code style
+- [Project Templates](./project-templates.md) — Customizing project scaffolds
+- [Configuration](./configuration.md) — Multi-environment YAML config
+

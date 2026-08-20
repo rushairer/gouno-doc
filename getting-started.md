@@ -25,19 +25,19 @@ gouno-cli --help
 gouno-cli new my-service -m github.com/you/my-service
 ```
 
-This creates a new Go web project from the default template. Options:
+This creates a new Go web project from the default template (`gouno-template`). Options:
 
-| Flag | Description | Default |
-|------|-------------|---------|
-| `-m, --module` | Go module path | Same as project name |
-| `-t, --template` | Template source (git URL or local path) | gouno-template from GitHub |
-| `--template-set` | Template set for code generation | (none, uses built-in default) |
+| Flag | Short | Default | Description |
+|------|-------|---------|-------------|
+| `--module` | `-m` | Project name | Go module path (e.g., `github.com/you/my-service`) |
+| `--template` | `-t` | `./templates` | Template source (git URL or local directory, default clones gouno-template) |
+| `--skip-tidy` | | `false` | Skip running `go mod tidy` after project creation |
 
-Example with a custom template set:
+Example using a custom project template repository:
 
 ```bash
 gouno-cli new order-service \
-  --template-set gorm \
+  -t https://github.com/myorg/custom-gouno-template \
   -m github.com/myorg/order-service
 ```
 
@@ -45,7 +45,6 @@ gouno-cli new order-service \
 
 ```bash
 cd my-service
-go mod tidy
 make build
 make run
 ```

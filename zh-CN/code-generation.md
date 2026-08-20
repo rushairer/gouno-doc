@@ -27,7 +27,7 @@ internal/
 gouno gen domain order              # → internal/domain/order.go
 gouno gen repository order          # → internal/repository/order.go
 gouno gen service order             # → internal/service/order.go
-gouno gen controller order          # → controller/order.go
+gouno gen controller order          # → internal/controller/order.go
 gouno gen task send_email           # → internal/task/send_email.go
 ```
 
@@ -49,7 +49,6 @@ gouno gen t send_email  # task
 |------|------|--------|
 | `--path, -p` | 输出目录 | 根据类型不同（见下表） |
 | `--force, -f` | 覆盖已有文件 | false |
-| `--template-set` | 使用的模板集 | 从 .gouno.yaml 读取或使用内置默认 |
 
 默认输出路径：
 
@@ -58,7 +57,7 @@ gouno gen t send_email  # task
 | domain | `internal/domain/` |
 | repository | `internal/repository/` |
 | service | `internal/service/` |
-| controller | `controller/` |
+| controller | `internal/controller/` |
 | task | `internal/task/` |
 
 ## 示例
@@ -69,9 +68,6 @@ gouno gen suite user --path ./pkg/user
 
 # 强制覆盖已有文件
 gouno gen suite user --force
-
-# 使用指定模板集
-gouno gen suite user --template-set gorm
 
 # 只生成 domain 实体
 gouno gen domain product
@@ -89,4 +85,6 @@ gouno gen suite user       # → struct User, UserService, UserRepository
 
 ## 下一步
 
-- [模板集](./template-sets.md) — 自定义生成的代码风格
+- [项目模板](./project-templates.md) — 自定义项目脚手架
+- [配置管理](./configuration.md) — Viper 多环境 YAML 配置
+
