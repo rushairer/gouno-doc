@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-08-24
+
+### Fixed
+
+- Correct the immutable `golangci-lint-action` SHA in the reusable Go module quality workflow.
+
 ## [1.2.0] - 2026-08-24
 
 ### Added
