@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+## [1.2.0] - 2026-08-24
+
+### Added
+
+- Add bilingual engineering, Go support, release, and compatibility standards for the Gouno repositories.
+- Publish SHA-pinnable reusable workflows for Go module quality, rendered project-template quality, and Conventional PR titles.
+
+### Changed
+
+- Establish Go 1.25.0 as the shared minimum and Go 1.25.x/1.26.x as the required CI matrix.
+
 ## [1.1.0] - 2026-08-20
 
 ### Changed
