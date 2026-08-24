@@ -11,6 +11,7 @@
 - [Code Generation](./code-generation.md) — Generate DDD modules with `gouno gen`
 - [Configuration](./configuration.md) — Multi-environment YAML config with Viper
 - [Middleware](./middleware.md) — Built-in middleware, security headers, and customization
+- [Engineering Standards](./engineering-standards.md) — Shared release, security, API, and CI baseline
 
 ## Related Repositories
 
@@ -19,4 +20,3 @@
 | [gouno](https://github.com/rushairer/gouno) | Core library — response format, middleware, code generator, auth |
 | [gouno-cli](https://github.com/rushairer/gouno-cli) | CLI tool — create projects from project templates |
 | [gouno-template](https://github.com/rushairer/gouno-template) | Default project template and scaffold |
-
