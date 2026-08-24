@@ -1,0 +1,23 @@
+name: Project template quality
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Rendered template quality (${{ matrix.go }})
+    strategy:
+      fail-fast: false
+      matrix:
+        go: ['1.25.x', '1.26.x']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
+        with:
+          go-version: ${{ matrix.go }}
+      - name: Verify rendered project
+        run: bash scripts/verify-template.sh

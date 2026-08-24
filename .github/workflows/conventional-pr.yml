@@ -1,0 +1,19 @@
+name: Conventional pull request
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  title:
+    name: Conventional PR title
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then exit 0; fi
+          printf '%s' "$PR_TITLE" | grep -Eq '^(build|chore|ci|docs|feat|fix|perf|refactor|revert|security|style|test)(\([[:alnum:]_.\/-]+\))?!?: .+'
