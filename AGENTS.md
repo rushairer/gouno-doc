@@ -11,13 +11,20 @@ Normative ownership is split intentionally:
 - `rushairer/gouno/docs/codegen-template-spec.md` owns the Codegen protocol/schema;
 - `rushairer/gouno-cli/docs/project-template-contract.md` owns project bootstrap semantics;
 - `rushairer/gouno-template` is the default reference implementation;
-- this repository owns explanatory guides, shared engineering standards, and compatibility documentation.
+- this repository owns explanatory guides, shared engineering standards, compatibility documentation, and ecosystem-level Architecture Profile guidance.
 
 Do not copy a normative specification here as a second source of truth. Summarize it for users and link to the authoritative repository.
 
 ## Architecture-neutral language
 
 Gouno Core does not prescribe DDD, Clean Architecture, Gin, Cobra, Viper, database technology, or generator names.
+
+The ecosystem currently documents two reference project/template profiles:
+
+- **Flat Layered** for simpler applications;
+- **Capability Module** for complex applications where capability ownership should precede implementation layers.
+
+These profiles are recommendations owned by project/template policy, not Gouno Core protocol requirements. The default `gouno-template` implements Flat Layered. Projects such as `gouno-blog` and `gosso` may adopt Capability Module through their own architecture and Codegen policy.
 
 When documentation uses `domain`, `repository`, `service`, `controller`, `task`, `suite`, Gin, Cobra, Viper, or other choices from `gouno-template`, explicitly identify them as behavior of the **default template**, not as Gouno protocol requirements.
 
@@ -49,6 +56,8 @@ Template author documentation must start from the minimum contract rather than f
 - omit Gouno runtime helpers when it does not need them;
 - omit Codegen entirely;
 - define its own Codegen command tree when it opts into Codegen v1.
+
+When recommending an architecture, link to `architecture-profiles.md` and keep the distinction explicit: profile choice belongs to the Project Template/Project, while Gouno Core stays architecture-agnostic.
 
 Always explain the two-stage template model: bootstrap rendering by `gouno-cli new`, then optional project Codegen rendering by `gouno gen`.
 
