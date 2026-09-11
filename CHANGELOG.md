@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Add bilingual Architecture Profiles guidance that defines Flat Layered for simpler applications and Capability Module for complex applications, while keeping both as project/template conventions rather than Gouno Core requirements.
+
 ## [1.3.0] - 2026-09-11
 
 ### Added
