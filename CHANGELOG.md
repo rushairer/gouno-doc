@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Add documentation governance rules that preserve normative ownership, bilingual alignment, compatibility discipline, and historical CHANGELOG facts.
+
+### Changed
+
+- Align Getting Started, Project Templates, and Code Generation guides with the released Codegen v1 architecture: project templates own concrete generator policy and may omit Codegen entirely.
+- Separate default `gouno-template` DDD/Gin conventions from Gouno Core requirements.
+- Document the two-stage bootstrap/Codegen rendering model and the legacy reserved `templates/` path.
+- Update the compatibility matrix for the released `gouno-cli v1.2.1` → `gouno-template v1.3.0` → `gouno v1.3.0` chain.
+
 ## [1.2.0] - 2026-08-24
 
 ### Added
