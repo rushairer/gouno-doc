@@ -100,15 +100,27 @@ That directory is **not** the Codegen v1 location. New Codegen-enabled templates
 
 Do not depend on `templates/` being copied into a generated project.
 
-## About authoring templates
+## Author your own template
 
 A custom template starts from the Project Template Contract, not from the default template's DDD/Gin structure. The simplest valid template can be only a small project skeleton with bootstrap variables and no Codegen at all.
 
 The official [`gouno-template`](https://github.com/rushairer/gouno-template) is useful as a reference implementation for a production-oriented default stack, but copying all of its architectural choices is optional.
 
-Until using a dedicated authoring guide, validate custom templates by generating a temporary project with `gouno-cli new`, running `go mod tidy`, and executing the generated project's build/test checks. Do not document a `template validate` subcommand as available; no such public command exists yet.
+Read [Authoring a Gouno Project Template](./template-authoring.md) for a step-by-step workflow covering:
+
+- a minimal no-Codegen template;
+- Bootstrap variables and reserved paths;
+- optional Gouno runtime dependencies;
+- optional Codegen v1 manifests and source templates;
+- two-stage rendering;
+- inherited `AGENTS.md` engineering contracts;
+- rendered-project verification and reusable CI;
+- immutable template releases.
+
+There is currently no public `gouno-cli template validate` subcommand. The authoring guide describes the current contract-based validation workflow and the boundary for a possible future lightweight validator.
 
 ## What's next
 
+- [Template Authoring](./template-authoring.md) — build and publish your own Project Template
 - [Code Generation](./code-generation.md) — understand template-defined Codegen capabilities
 - [Configuration](./configuration.md) — configuration used by the default template
