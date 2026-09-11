@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 
 - Add documentation governance rules that preserve normative ownership, bilingual alignment, compatibility discipline, and historical CHANGELOG facts.
+- Add bilingual Template Authoring guides covering minimal architecture-neutral templates, optional Codegen v1, the two-stage rendering model, inherited `AGENTS.md` contracts, rendered-project verification, reusable CI, and immutable template releases.
 
 ### Changed
 

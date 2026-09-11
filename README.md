@@ -19,6 +19,7 @@ The official template is a reference implementation. Its Gin/Cobra/Viper choices
 
 - [Getting Started](./getting-started.md) — install the CLI, create a project, and run the default template
 - [Project Templates](./project-templates.md) — select, pin, and use full project templates
+- [Template Authoring](./template-authoring.md) — design, validate, and publish your own Gouno project template
 - [Code Generation](./code-generation.md) — use template-defined Codegen capabilities
 - [Configuration](./configuration.md) — configuration behavior of the default template
 - [Middleware](./middleware.md) — reusable middleware and default-template wiring

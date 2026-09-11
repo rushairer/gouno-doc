@@ -100,15 +100,27 @@ Project Template **不要求**支持 Codegen。如果没有 `.gouno/codegen.yaml
 
 不要依赖 `templates/` 被复制到生成项目。
 
-## 关于开发自己的 Template
+## 开发自己的 Template
 
 自定义 Template 应从 Project Template Contract 出发，而不是从官方默认 Template 的 DDD/Gin 目录开始。一个最小合法 Template 可以只是很小的项目骨架、少量 Bootstrap 变量，并且完全没有 Codegen。
 
 官方 [`gouno-template`](https://github.com/rushairer/gouno-template) 适合作为生产向默认栈的参考实现，但是否采用它的全部架构选择由 Template 作者自己决定。
 
-在专门的 Authoring Guide 落地前，开发自定义 Template 时应通过 `gouno-cli new` 生成临时项目，再执行 `go mod tidy` 和生成项目自己的 build/test 检查。当前没有公开的 `template validate` 子命令，不要把它当成已经存在的工具写入使用说明。
+完整步骤请阅读 [开发自己的 Gouno Project Template](./template-authoring.md)，其中包含：
+
+- 最小、无 Codegen 的 Template；
+- Bootstrap 变量与保留路径；
+- 可选的 Gouno Runtime 依赖；
+- 可选的 Codegen v1 Manifest 与源码模板；
+- 两阶段渲染；
+- 随 Template 下发的 `AGENTS.md` 工程契约；
+- Rendered Project 验证与 Reusable CI；
+- 不可变 Template Release。
+
+当前没有公开的 `gouno-cli template validate` 子命令。Authoring Guide 会说明目前基于 Contract 的验证方式，以及未来轻量 Validator 应遵守的边界。
 
 ## 下一步
 
+- [Template 开发指南](./template-authoring.md) — 创建并发布自己的 Project Template
 - [代码生成](./code-generation.md) — 理解 Template 定义的 Codegen 能力
 - [配置管理](./configuration.md) — 默认 Template 使用的配置方式
