@@ -2,39 +2,52 @@
 
 [中文](./zh-CN/project-templates.md)
 
-Project templates are the skeleton repositories used by `gouno-cli new` to scaffold new Go web projects.
+A Gouno **Project Template** is a full project skeleton consumed by `gouno-cli new`.
 
-Instead of maintaining a local registry or complex template sets, `gouno-cli` uses standard Git repositories or local directories directly via the `-t, --template` flag.
+A template owns its project structure and development conventions. It may choose Gin, Echo, Fiber, net/http, DDD, Clean Architecture, another architecture, or no particular layering at all. The official [`gouno-template`](https://github.com/rushairer/gouno-template) is the default reference template, not a mandatory architecture.
 
-## Using Project Templates
-
-### Default Template
-
-By default, `gouno-cli` clones [gouno-template](https://github.com/rushairer/gouno-template):
+## Use the default template
 
 ```bash
 gouno-cli new my-service -m github.com/you/my-service
 ```
 
-### Custom Remote Git Template
+With the normal default setup, `gouno-cli` uses the official template when a local `./templates` directory is not present.
 
-Point `-t` to any Git repository URL (HTTPS or SSH):
+## Use a custom remote template
+
+HTTPS:
 
 ```bash
-# HTTPS URL
 gouno-cli new my-service \
   -t https://github.com/myorg/custom-gouno-template \
   -m github.com/myorg/my-service
+```
 
-# SSH URL
+SSH:
+
+```bash
 gouno-cli new my-service \
   -t git@github.com:myorg/custom-gouno-template.git \
   -m github.com/myorg/my-service
 ```
 
-### Local Directory Template
+## Pin a template version
 
-Point `-t` to a local folder:
+Remote templates follow their default branch unless `--template-ref` is provided.
+
+For reproducible project creation, prefer an immutable release tag:
+
+```bash
+gouno-cli new my-service \
+  -t https://github.com/myorg/custom-gouno-template \
+  --template-ref v2.3.0 \
+  -m github.com/myorg/my-service
+```
+
+A moving branch is useful during template development but is not an immutable release input.
+
+## Use a local template
 
 ```bash
 gouno-cli new my-service \
@@ -42,111 +55,60 @@ gouno-cli new my-service \
   -m github.com/you/my-service
 ```
 
----
+This is useful while developing and testing a project template before publishing it.
 
-## How Template Rendering Works
+## Bootstrap behavior
 
-When `gouno-cli new` scaffolds a project:
+At a high level, `gouno-cli new`:
 
-1. **Clone / Copy**: Clones the remote repository into a temporary directory, or reads the local template directory.
-2. **Variable Substitution**: Any file containing `{{` is parsed as a Go `text/template` with the following variables:
-   - `{{.ModulePath}}`: The Go module path specified via `-m` (e.g. `github.com/you/my-service`).
-   - `{{.ProjectName}}`: The project name passed as the first argument (e.g. `my-service`).
-   Files without `{{` are copied verbatim.
-3. **Automatic Filtering**: The following files and directories are automatically skipped during copying to protect privacy and prevent skeleton metadata leakage:
-   - `.git/`
-   - `.idea/`
-   - `.DS_Store`
-   - `bin/`
-   - `templates/` (internal scaffold files for code generators)
-   - `.env` and `.env.*`
-   - `*.local.yaml` (private local configuration overrides)
-4. **File Mode Preservation**: File executable permissions (e.g., `scripts/*.sh`) are preserved, while group/other write bits are sanitized for security.
-5. **Module Tidying**: Automatically runs `go mod tidy` in the generated project unless `--skip-tidy` is specified.
-6. **Atomic Rollback**: If template rendering or `go mod tidy` fails, the newly created directory is cleaned up automatically.
+1. clones or reads the selected full project template;
+2. renders first-stage project values such as `{{.ModulePath}}` and `{{.ProjectName}}` in ordinary bootstrap files;
+3. copies Codegen v1 runtime resources under `.gouno/codegen*` verbatim;
+4. filters reserved/private paths;
+5. preserves executable permissions subject to the bootstrap safety mask;
+6. runs `go mod tidy` unless `--skip-tidy` is supplied;
+7. removes a partial destination when rendering or module tidying fails.
 
----
+The exact behavior is normative in the [`gouno-cli` Project Template Contract v1](https://github.com/rushairer/gouno-cli/blob/main/docs/project-template-contract.md). This guide intentionally does not duplicate that specification.
 
-## Creating Your Own Project Template
+### Two template stages
 
-To create a reusable project template for your team:
+A Codegen-enabled project can contain two independent rendering stages:
 
-### 1. Structure Your Repository
+```text
+Stage 1: gouno-cli new
+  bootstrap data: ModulePath / ProjectName
 
-Create a standard Go project skeleton (like [gouno-template](https://github.com/rushairer/gouno-template)):
-
-```
-my-team-template/
-├── cmd/
-│   ├── gouno/
-│   │   ├── root.go
-│   │   └── web.go
-│   └── main.go              ← contains: import "{{.ModulePath}}/cmd/gouno"
-├── config/
-│   ├── development.yaml
-│   ├── production.yaml
-│   └── test.yaml
-├── internal/
-│   ├── domain/
-│   ├── repository/
-│   └── service/
-├── router/
-│   └── web.go
-├── Makefile
-└── go.mod                   ← contains: module {{.ModulePath}}
+Stage 2: gouno gen ...
+  project Codegen data: arguments / flags / Codegen functions
 ```
 
-### 2. Add Template Variables
+`.gouno/codegen.yaml` and `.gouno/codegen/**` are raw-copied in Stage 1 so Stage 2 expressions survive project creation.
 
-In files where the module path or project name is referenced (such as `go.mod`, `main.go`, `config/development.yaml`), use Go template placeholders:
+A project template does **not** have to provide Codegen. If it omits `.gouno/codegen.yaml`, the resulting project can have no `gen` command at all.
 
-```go
-// go.mod
-module {{.ModulePath}}
+## Legacy `templates/` path
 
-go 1.23.0
+`gouno-cli` still filters a path segment named `templates/` for historical compatibility with older Gouno template repositories.
+
+That directory is **not** the Codegen v1 location. New Codegen-enabled templates use:
+
+```text
+.gouno/codegen.yaml
+.gouno/codegen/
 ```
 
-```go
-// cmd/main.go
-package main
+Do not depend on `templates/` being copied into a generated project.
 
-import "{{.ModulePath}}/cmd/gouno"
+## About authoring templates
 
-func main() {
-    gouno.Execute()
-}
-```
+A custom template starts from the Project Template Contract, not from the default template's DDD/Gin structure. The simplest valid template can be only a small project skeleton with bootstrap variables and no Codegen at all.
 
-```yaml
-# config/development.yaml
-database:
-    drivers:
-        sqlite:
-            dsn: ./data/{{.ProjectName}}_development.db
-```
+The official [`gouno-template`](https://github.com/rushairer/gouno-template) is useful as a reference implementation for a production-oriented default stack, but copying all of its architectural choices is optional.
 
-### 3. Publish and Share
+Until using a dedicated authoring guide, validate custom templates by generating a temporary project with `gouno-cli new`, running `go mod tidy`, and executing the generated project's build/test checks. Do not document a `template validate` subcommand as available; no such public command exists yet.
 
-Push your template to GitHub, GitLab, or any Git server:
+## What's next
 
-```bash
-git init
-git add .
-git commit -m "feat: initial project template"
-git remote add origin https://github.com/myorg/my-team-template.git
-git push -u origin main
-```
-
-Your team members can now create new microservices with:
-
-```bash
-gouno-cli new billing-service -t https://github.com/myorg/my-team-template -m github.com/myorg/billing-service
-```
-
----
-
-## What's Next
-
-- [Code Generation](./code-generation.md) — Generate DDD modules in your projects
-- [Configuration](./configuration.md) — Multi-environment YAML config
+- [Code Generation](./code-generation.md) — understand template-defined Codegen capabilities
+- [Configuration](./configuration.md) — configuration used by the default template
