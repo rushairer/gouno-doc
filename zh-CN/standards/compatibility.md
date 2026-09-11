@@ -29,6 +29,6 @@ gouno v1.3.0
 | 仓库发布版本 | 基线 | 支持的 Go CI |
 | --- | --- | --- |
 | gouno-agent-demo v0.2.0 | gouno v1.2.0 | 1.25.x、1.26.x |
-| gouno-doc v1.2.0 | reusable CI / 工程规范 | 不适用 |
+| gouno-doc v1.3.0 | 当前文档 / 契约基线 | 不适用 |
 
 当协调发布改变 Project Template 或 Codegen Contract 时，应依据已经发布的正式版本更新本矩阵，而不是根据分支状态推断。

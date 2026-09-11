@@ -29,6 +29,6 @@ A custom project template does not have to depend on the Gouno runtime or enable
 | Repository release | Baseline | Supported Go CI |
 | --- | --- | --- |
 | gouno-agent-demo v0.2.0 | gouno v1.2.0 | 1.25.x, 1.26.x |
-| gouno-doc v1.2.0 | reusable CI / engineering policy | n/a |
+| gouno-doc v1.3.0 | current documentation / contracts baseline | n/a |
 
 When a coordinated release changes the project-template or Codegen contracts, update this matrix from published releases rather than inferred branch state.
