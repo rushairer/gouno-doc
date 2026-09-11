@@ -19,6 +19,7 @@ gouno-doc       用户指南 + 工程/兼容性规范
 
 - [快速开始](./getting-started.md) — 安装 CLI、创建项目并运行默认模板
 - [项目模板](./project-templates.md) — 选择、固定版本并使用完整 Project Template
+- [Template 开发指南](./template-authoring.md) — 设计、验证并发布自己的 Gouno Project Template
 - [代码生成](./code-generation.md) — 使用 Template 定义的 Codegen 能力
 - [配置管理](./configuration.md) — 默认 Template 的配置行为
 - [中间件](./middleware.md) — 可复用中间件与默认 Template 接线
