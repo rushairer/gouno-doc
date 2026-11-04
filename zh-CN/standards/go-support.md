@@ -10,4 +10,4 @@ Gouno Core、gouno-cli 与官方 gouno-template 的下一轮协调 minor 发布�
 
 未来的 minor 发布可以提高最低 Go 版本。发布说明、README、兼容性矩阵和迁移指南必须明确说明变化；新版本发布后，旧 Go 版本不再受支持。
 
-必需 Go 质量门禁为 gofmt、tidy 后无差异、race 测试、vet、govulncheck@v1.6.0 和 golangci-lint v2.12.2。模板仓库只对新渲染的临时项目执行这些检查。
+必需 Go 质量门禁为 gofmt、tidy 后无差异、race 测试、vet、govulncheck@v1.6.0 和 golangci-lint v2.15.0。模板仓库只对新渲染的临时项目执行这些检查。

@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Set the next coordinated first-party Go baseline to Go 1.26.0 and align reusable quality workflows with Go 1.26.x / 1.27.x.
 - Refresh reusable workflow action pins to actions/checkout v7.0.1 and actions/setup-go v7.0.0.
+- Upgrade the shared Go lint toolchain to golangci-lint v2.15.0 for Go 1.27 source compatibility.
 
 ### Added
 
