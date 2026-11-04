@@ -31,7 +31,7 @@ my-gouno-template/
 ```go
 module {{.ModulePath}}
 
-go 1.25.0
+go 1.26.0
 ```
 
 `cmd/main.go`：
