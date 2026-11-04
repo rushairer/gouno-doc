@@ -4,7 +4,7 @@
 
 Gouno Core、gouno-cli 与官方 gouno-template 的下一轮协调 minor 发布，将 Go 1.26.0 作为最低支持工具链版本。这是因为修复 HTTP/2 漏洞的 golang.org/x/net v0.60.0 要求 Go 1.26，也确保 gouno-cli new 能够使用本机 Go 工具链对生成的默认模板执行 go mod tidy。
 
-当前 CI 矩阵为 Go 1.26.x 和 Go 1.27.x，覆盖前一个与当前受支持的 Go 系列。所有第一方 Go 仓库都必须在 PR 和默认分支推送时测试这两个系列的最新补丁版本。业务应用也应持续使用对应系列的最新 patch。
+当前 CI 矩阵为 Go 1.26.x 和 Go 1.27.x，覆盖前一个与当前受支持的 Go 系列。所有第一方 Go 仓库都必须在 PR 和默认分支推送时测试这两个系列的最新补丁版本。可复用工作流必须为 `actions/setup-go` 设置 `check-latest: true`；否则 GitHub Hosted Runner 的预装工具链缓存可能让 `1.26.x` 继续使用已经存在安全漏洞的旧补丁，即使修复版本已经发布。业务应用也应持续使用对应系列的最新 patch。
 
 已经发布的产物仍遵循各自 go.mod 和[兼容性矩阵](./compatibility.md)中记录的要求。不得根据下一轮发布基线推断历史正式版本的最低 Go 版本。
 
