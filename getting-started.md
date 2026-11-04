@@ -4,10 +4,10 @@
 
 ## Prerequisites
 
-- Go 1.25.0 or newer
+- Go 1.26.0 or newer
 - Git
 
-Current Gouno quality gates cover Go 1.25.x and 1.26.x.
+The coordinated first-party Go quality gates cover Go 1.26.x and 1.27.x.
 
 ## Install gouno-cli
 
