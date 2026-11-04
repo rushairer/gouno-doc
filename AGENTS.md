@@ -64,3 +64,8 @@ Always explain the two-stage template model: bootstrap rendering by `gouno-cli n
 ## Validation
 
 Run `scripts/check-docs.sh` and all repository CI checks. Relative links, bilingual standards, workflow pinning, and current compatibility claims must remain valid.
+
+## Go patch freshness
+
+- All reusable Go quality workflows using version ranges such as `1.26.x` or `1.27.x` must set `check-latest: true` on `actions/setup-go`. GitHub-hosted runner images may contain an older patch release that still satisfies the range; default cache preference is not an acceptable security-update policy.
+- Keep `govulncheck` enabled and use it to verify the actual standard-library toolchain selected by CI. Never silence a standard-library finding to work around a stale runner cache.
