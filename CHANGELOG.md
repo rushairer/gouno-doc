@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Add bilingual Architecture Profiles guidance for Flat Layered and Capability Module as project/template conventions.
 
 ### Changed
+- Record the published Gosso v1.7.0 and independent Agent Demo v0.3.0 artifacts without attributing newer candidate compatibility tests to older Admin/Blog tags.
 - Record the published Core v1.4.0 → Template v1.4.0 → CLI v1.3.0 chain with exact release SHAs and dual-series integration evidence in both compatibility matrices.
 - Separate actually published Gosso, Admin, Blog and npm baselines from release candidates; remove the untagged Agent Demo v0.2.0 claim from the formal matrix.
 - Require latest-patch selection in reusable Go 1.26.x / 1.27.x quality workflows; update pinned Actions and golangci-lint v2.15.0.

@@ -30,13 +30,14 @@ A custom project template does not have to depend on the Gouno runtime or enable
 
 | Repository release | Published relationship / acceptance boundary |
 | --- | --- |
-| [Gosso v1.6.1](https://github.com/rushairer/gosso/releases/tag/v1.6.1) | Released identity-provider baseline; the new global administrator OAuth2 client-governance API is not part of this version |
+| [Gosso v1.7.0](https://github.com/rushairer/gosso/releases/tag/v1.7.0) | Core v1.4.0; global administrator OAuth2 client governance; verified multi-arch image, exact-identity signature, SBOMs and Helm OCI 1.7.0 |
 | [GOSSO Admin v0.7.24](https://github.com/rushairer/gosso-admin/releases/tag/v0.7.24) | Last released Admin; candidate 0.7.25 is excluded until certification and release acceptance pass |
-| [Gouno Blog v1.5.26](https://github.com/rushairer/gouno-blog/releases/tag/v1.5.26) | Last released Blog; newer main-branch BFF compatibility evidence against Gosso v1.6.1 does not establish a new Blog release |
+| [Gouno Blog v1.5.26](https://github.com/rushairer/gouno-blog/releases/tag/v1.5.26) | Last released Blog; later main-branch BFF evidence does not establish a new Blog release |
 | [@gouno/ui v0.4.9](https://github.com/rushairer/gouno-ui/releases/tag/v0.4.9) | Published canonical UI npm package; Showcase-only changes do not imply a new package version |
 | @gosso/client v0.9.3 | Published npm client used by the current consumers; application release acceptance remains separate |
 | [gouno-agent-demo v0.3.0](https://github.com/rushairer/gouno-agent-demo/releases/tag/v0.3.0) | Core v1.4.0; Go 1.26.x / 1.27.x; Agent, SSE and provider adapter tests |
-| [gouno-doc v1.3.0](https://github.com/rushairer/gouno-doc/releases/tag/v1.3.0) | Last released documentation baseline |
+
+These rows are independent released artifacts. They do not certify the previously released Admin v0.7.24 or Blog v1.5.26 against Gosso v1.7.0. Later candidate-commit compatibility evidence must not be attributed to those older tags.
 
 Agent Demo v0.3.0 is now published independently of the main chain at `ca372fc72379dbf63e6794f5d4e65af7c88e8ba7`. Its historical changelog entry v0.2.0 had no public tag or GitHub Release and remains excluded from the formal baseline.
 

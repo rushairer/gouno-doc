@@ -30,13 +30,14 @@ CLI 集成门禁在两个 Go 系列均通过 tidy、单项/组合生成、Race �
 
 | 仓库发布版本 | 正式发布关系 / 验收边界 |
 | --- | --- |
-| [Gosso v1.6.1](https://github.com/rushairer/gosso/releases/tag/v1.6.1) | 已发布身份服务基线；不包含新增的管理员 OAuth2 Client 全局治理 API |
+| [Gosso v1.7.0](https://github.com/rushairer/gosso/releases/tag/v1.7.0) | Core v1.4.0；管理员 OAuth2 Client 全局治理；多架构镜像、精确身份签名、SBOM 及 Helm OCI 1.7.0 已验证 |
 | [GOSSO Admin v0.7.24](https://github.com/rushairer/gosso-admin/releases/tag/v0.7.24) | 最近正式 Admin；候选 0.7.25 在认证及发布验收通过前不列为正式基线 |
-| [Gouno Blog v1.5.26](https://github.com/rushairer/gouno-blog/releases/tag/v1.5.26) | 最近正式 Blog；新 main 对 Gosso v1.6.1 的 BFF 验收证据不构成新 Blog 发布 |
+| [Gouno Blog v1.5.26](https://github.com/rushairer/gouno-blog/releases/tag/v1.5.26) | 最近正式 Blog；后续 main 的 BFF 证据不构成新 Blog 发布 |
 | [@gouno/ui v0.4.9](https://github.com/rushairer/gouno-ui/releases/tag/v0.4.9) | 已发布的 Canonical UI npm 包；Showcase 改动不等于 npm 包版本变化 |
 | @gosso/client v0.9.3 | 当前消费者使用的已发布 npm Client；应用版本仍须独立验收 |
 | [gouno-agent-demo v0.3.0](https://github.com/rushairer/gouno-agent-demo/releases/tag/v0.3.0) | Core v1.4.0；Go 1.26.x / 1.27.x；Agent、SSE 及 Provider 适配测试 |
-| [gouno-doc v1.3.0](https://github.com/rushairer/gouno-doc/releases/tag/v1.3.0) | 最近正式文档基线 |
+
+这些行分别记录独立的正式产物，不代表已验证旧 Admin v0.7.24 或 Blog v1.5.26 与 Gosso v1.7.0 的组合。后续候选提交的兼容证据不得归属于这些旧 Tag。
 
 Agent Demo v0.3.0 现已独立于主链发布，提交为 `ca372fc72379dbf63e6794f5d4e65af7c88e8ba7`。历史 CHANGELOG v0.2.0 没有公开 Tag 或 GitHub Release，仍不属于正式兼容基线。
 
