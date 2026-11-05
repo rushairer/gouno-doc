@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Record the independently published Gouno Core v1.4.0 while keeping the last fully coordinated CLI → Template → Core chain explicit until Template v1.4.0 and CLI v1.3.0 are tagged.
+
+### Changed
+
 - Require `actions/setup-go` `check-latest: true` in reusable Go quality workflows so version ranges cannot silently reuse a vulnerable preinstalled patch release.
 - Define dependency-ordered multi-repository release sequencing and require exact published dependency tags before releasing the default template and CLI.
 
