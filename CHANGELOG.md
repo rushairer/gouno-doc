@@ -7,24 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-### Changed
-
-- Record the independently published Gouno Core v1.4.0 while keeping the last fully coordinated CLI → Template → Core chain explicit until Template v1.4.0 and CLI v1.3.0 are tagged.
-
-### Changed
-
-- Require `actions/setup-go` `check-latest: true` in reusable Go quality workflows so version ranges cannot silently reuse a vulnerable preinstalled patch release.
-- Define dependency-ordered multi-repository release sequencing and require exact published dependency tags before releasing the default template and CLI.
-
-### Changed
-
-- Set the next coordinated first-party Go baseline to Go 1.26.0 and align reusable quality workflows with Go 1.26.x / 1.27.x.
-- Refresh reusable workflow action pins to actions/checkout v7.0.1 and actions/setup-go v7.0.0.
-- Upgrade the shared Go lint toolchain to golangci-lint v2.15.0 for Go 1.27 source compatibility.
+## [1.3.1] - 2026-11-05
 
 ### Added
+- Add bilingual Architecture Profiles guidance for Flat Layered and Capability Module as project/template conventions.
 
-- Add bilingual Architecture Profiles guidance that defines Flat Layered for simpler applications and Capability Module for complex applications, while keeping both as project/template conventions rather than Gouno Core requirements.
+### Changed
+- Record the published Core v1.4.0 → Template v1.4.0 → CLI v1.3.0 chain with exact release SHAs and dual-series integration evidence in both compatibility matrices.
+- Separate actually published Gosso, Admin, Blog and npm baselines from release candidates; remove the untagged Agent Demo v0.2.0 claim from the formal matrix.
+- Require latest-patch selection in reusable Go 1.26.x / 1.27.x quality workflows; update pinned Actions and golangci-lint v2.15.0.
+- Document dependency-ordered releases and immutable upstream verification.
 
 ## [1.3.0] - 2026-09-11
 

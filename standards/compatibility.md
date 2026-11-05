@@ -4,41 +4,39 @@
 
 This matrix records released artifacts only. Branch heads, local replacements, and pseudo-versions are not compatibility baselines.
 
-## Latest standalone Core release
+## Coordinated project-creation chain
 
-| Repository release | Contract / dependency baseline | Supported Go CI |
-| --- | --- | --- |
-| gouno v1.4.0 | Stable Codegen Specification `gouno.dev/codegen/v1`; Go 1.26 minimum; HTTP/2 dependency security baseline | 1.26.x, 1.27.x |
+| Repository release | Contract / dependency baseline | Supported Go CI | Verified release commit |
+| --- | --- | --- | --- |
+| [gouno v1.4.0](https://github.com/rushairer/gouno/releases/tag/v1.4.0) | Stable Codegen Specification `gouno.dev/codegen/v1`; Go 1.26 minimum; patched HTTP/2 dependency baseline | 1.26.x, 1.27.x | `20efba0af181cb3e03c5bcb199576bfcdec1bd7f` |
+| [gouno-template v1.4.0](https://github.com/rushairer/gouno-template/releases/tag/v1.4.0) | Core v1.4.0; default Flat Layered profile and template-owned Codegen v1 policy | 1.26.x, 1.27.x | `9f0cba9c8a6be6331f48596c83663efbec5490a2` |
+| [gouno-cli v1.3.0](https://github.com/rushairer/gouno-cli/releases/tag/v1.3.0) | Project Template Contract v1; live-default and pinned Template v1.4.0 Bootstrap with verbatim Codegen resources | 1.26.x, 1.27.x | `087c00a523a6ec8c512d5eb9c65f657f6be8d5fb` |
 
-Gouno Core v1.4.0 is publicly available as a Go module and its tag resolves to the reviewed release commit. The GitHub Release page may be published separately; module availability is established by the verified public module proxy.
-
-## Latest fully coordinated project-creation chain
-
-| Repository release | Contract / dependency baseline | Supported Go CI |
-| --- | --- | --- |
-| gouno v1.3.0 | Codegen Specification `gouno.dev/codegen/v1` | 1.25.x, 1.26.x |
-| gouno-template v1.3.0 | depends on gouno v1.3.0; default Codegen v1 policy | 1.25.x, 1.26.x |
-| gouno-cli v1.2.1 | Project Template Contract v1; preserves Codegen v1 runtime resources | 1.25.x, 1.26.x |
-
-The recommended fully coordinated released chain is therefore:
+The recommended released chain is:
 
 ```text
-gouno-cli v1.2.1
+gouno-cli v1.3.0
         ↓ project bootstrap
-gouno-template v1.3.0
+gouno-template v1.4.0
         ↓ runtime / Codegen protocol
-gouno v1.3.0
+gouno v1.4.0
 ```
 
-The newer standalone Core v1.4.0 is not yet consumed by a released Template/CLI chain. The coordinated chain will advance only after gouno-template v1.4.0 and gouno-cli v1.3.0 are tagged and their integration gates pass.
+Both supported Go series passed tidy, individual/composition generation, race and vet in the CLI integration gate. Template CI additionally passed lint and govulncheck on Go 1.26.10 and 1.27.3. Core and CLI resolve through the public Go module proxy. Template's root `go.mod` is a bootstrap template, not a publishable Go module.
 
 A custom project template does not have to depend on the Gouno runtime or enable Codegen unless its own design requires those capabilities. Compatibility claims for custom templates belong to those templates.
 
 ## Other released baselines
 
-| Repository release | Baseline | Supported Go CI |
-| --- | --- | --- |
-| gouno-agent-demo v0.2.0 | gouno v1.2.0 | 1.25.x, 1.26.x |
-| gouno-doc v1.3.0 | current documentation / contracts baseline | n/a |
+| Repository release | Published relationship / acceptance boundary |
+| --- | --- |
+| [Gosso v1.6.1](https://github.com/rushairer/gosso/releases/tag/v1.6.1) | Released identity-provider baseline; the new global administrator OAuth2 client-governance API is not part of this version |
+| [GOSSO Admin v0.7.24](https://github.com/rushairer/gosso-admin/releases/tag/v0.7.24) | Last released Admin; candidate 0.7.25 is excluded until certification and release acceptance pass |
+| [Gouno Blog v1.5.26](https://github.com/rushairer/gouno-blog/releases/tag/v1.5.26) | Last released Blog; newer main-branch BFF compatibility evidence against Gosso v1.6.1 does not establish a new Blog release |
+| [@gouno/ui v0.4.9](https://github.com/rushairer/gouno-ui/releases/tag/v0.4.9) | Published canonical UI npm package; Showcase-only changes do not imply a new package version |
+| @gosso/client v0.9.3 | Published npm client used by the current consumers; application release acceptance remains separate |
+| [gouno-doc v1.3.0](https://github.com/rushairer/gouno-doc/releases/tag/v1.3.0) | Last released documentation baseline |
 
-When a coordinated release changes the project-template or Codegen contracts, update this matrix from published releases rather than inferred branch state.
+Agent Demo's historical changelog entry v0.2.0 has no public tag or GitHub Release at audit time and is therefore not a released compatibility baseline. Its Core v1.4.0 upgrade is maintained independently of this chain.
+
+When a coordinated release changes project-template or Codegen contracts, update this matrix from published artifacts and exact integration evidence. Do not promote Gosso or Blog candidates here before their releases exist.
