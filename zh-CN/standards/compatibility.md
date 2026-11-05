@@ -35,8 +35,9 @@ CLI 集成门禁在两个 Go 系列均通过 tidy、单项/组合生成、Race �
 | [Gouno Blog v1.5.26](https://github.com/rushairer/gouno-blog/releases/tag/v1.5.26) | 最近正式 Blog；新 main 对 Gosso v1.6.1 的 BFF 验收证据不构成新 Blog 发布 |
 | [@gouno/ui v0.4.9](https://github.com/rushairer/gouno-ui/releases/tag/v0.4.9) | 已发布的 Canonical UI npm 包；Showcase 改动不等于 npm 包版本变化 |
 | @gosso/client v0.9.3 | 当前消费者使用的已发布 npm Client；应用版本仍须独立验收 |
+| [gouno-agent-demo v0.3.0](https://github.com/rushairer/gouno-agent-demo/releases/tag/v0.3.0) | Core v1.4.0；Go 1.26.x / 1.27.x；Agent、SSE 及 Provider 适配测试 |
 | [gouno-doc v1.3.0](https://github.com/rushairer/gouno-doc/releases/tag/v1.3.0) | 最近正式文档基线 |
 
-审计时 Agent Demo 的历史 CHANGELOG v0.2.0 没有公开 Tag 或 GitHub Release，因此不属于正式兼容基线。它对 Core v1.4.0 的升级独立于主发布链维护。
+Agent Demo v0.3.0 现已独立于主链发布，提交为 `ca372fc72379dbf63e6794f5d4e65af7c88e8ba7`。历史 CHANGELOG v0.2.0 没有公开 Tag 或 GitHub Release，仍不属于正式兼容基线。
 
 协调发布改变 Project Template 或 Codegen Contract 时，应依据正式产物及确切集成证据更新矩阵。Gosso、Blog 候选版本在实际发布前不得列为正式版本。

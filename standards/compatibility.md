@@ -35,8 +35,9 @@ A custom project template does not have to depend on the Gouno runtime or enable
 | [Gouno Blog v1.5.26](https://github.com/rushairer/gouno-blog/releases/tag/v1.5.26) | Last released Blog; newer main-branch BFF compatibility evidence against Gosso v1.6.1 does not establish a new Blog release |
 | [@gouno/ui v0.4.9](https://github.com/rushairer/gouno-ui/releases/tag/v0.4.9) | Published canonical UI npm package; Showcase-only changes do not imply a new package version |
 | @gosso/client v0.9.3 | Published npm client used by the current consumers; application release acceptance remains separate |
+| [gouno-agent-demo v0.3.0](https://github.com/rushairer/gouno-agent-demo/releases/tag/v0.3.0) | Core v1.4.0; Go 1.26.x / 1.27.x; Agent, SSE and provider adapter tests |
 | [gouno-doc v1.3.0](https://github.com/rushairer/gouno-doc/releases/tag/v1.3.0) | Last released documentation baseline |
 
-Agent Demo's historical changelog entry v0.2.0 has no public tag or GitHub Release at audit time and is therefore not a released compatibility baseline. Its Core v1.4.0 upgrade is maintained independently of this chain.
+Agent Demo v0.3.0 is now published independently of the main chain at `ca372fc72379dbf63e6794f5d4e65af7c88e8ba7`. Its historical changelog entry v0.2.0 had no public tag or GitHub Release and remains excluded from the formal baseline.
 
 When a coordinated release changes project-template or Codegen contracts, update this matrix from published artifacts and exact integration evidence. Do not promote Gosso or Blog candidates here before their releases exist.
