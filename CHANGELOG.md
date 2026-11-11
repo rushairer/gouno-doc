@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Preserve independent final-release receipts for Gosso v1.7.2, Admin v0.7.25 and Blog v1.6.0, including exact identities/digests, SBOM/provenance checks and explicit manual/Staging publication exceptions.
+
+### Changed
+
+- Update both compatibility matrices from actual published downstream artifacts; retain Core/Template v1.4.0, CLI v1.3.0, UI v0.4.9 and Agent Demo v0.3.0. Document patched Go 1.26.11/1.27.4 requirements without rewriting historical releases.
+
 ## [1.3.1] - 2026-11-05
 
 ### Added

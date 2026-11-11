@@ -1,0 +1,165 @@
+{
+  "scope": "Anonymous existing production only; main-channel deployed versions, not release candidates or certification. No authenticated account, secret access, service mutation or deployment.",
+  "transport": "Read-only SSH SOCKS tunnel root@io84.com; Playwright Chromium 1.55.0 with existing cached browser. Native browser unavailable. Tunnel closed after review.",
+  "login": [
+    {
+      "id": "sso-login",
+      "width": 1440,
+      "status": 200,
+      "title": "Sign In - IO84 \u540e\u53f0",
+      "path": "/login",
+      "textLength": 125,
+      "buttons": [
+        "Sign In",
+        "Sign in with Passkey"
+      ],
+      "errors": [],
+      "scroll": {
+        "scrollY": 0,
+        "height": 1000,
+        "width": 1440,
+        "viewport": 1440
+      },
+      "focus": {
+        "tag": "INPUT",
+        "role": null,
+        "text": ""
+      }
+    },
+    {
+      "id": "sso-login",
+      "width": 390,
+      "status": 200,
+      "title": "Sign In - IO84 \u540e\u53f0",
+      "path": "/login",
+      "textLength": 125,
+      "buttons": [
+        "Sign In",
+        "Sign in with Passkey"
+      ],
+      "errors": [],
+      "scroll": {
+        "scrollY": 0,
+        "height": 844,
+        "width": 390,
+        "viewport": 390
+      },
+      "focus": {
+        "tag": "INPUT",
+        "role": null,
+        "text": ""
+      }
+    }
+  ],
+  "blog": [
+    {
+      "width": 1440,
+      "title": "IO84 - \u8bb0\u5f55\u3001\u601d\u8003\u4e0e\u5206\u4eab\u3002",
+      "themeOptions": "\u6d45\u8272\n\u6df1\u8272\n\u8ddf\u968f\u7cfb\u7edf",
+      "darkMode": true,
+      "mobileNav": false,
+      "footerVisible": true,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "title": "IO84 - \u8bb0\u5f55\u3001\u601d\u8003\u4e0e\u5206\u4eab\u3002",
+      "themeOptions": "\u6d45\u8272\n\u6df1\u8272\n\u8ddf\u968f\u7cfb\u7edf",
+      "darkMode": true,
+      "mobileNav": true,
+      "footerVisible": true,
+      "errors": [],
+      "overflow": false
+    }
+  ],
+  "visual_review": "Actual screenshots inspected: desktop/mobile login; settled Blog desktop light/dark, mobile light, dark navigation drawer and scrolled footer. Responsive pages rendered without horizontal overflow or uncaught JavaScript errors in this limited anonymous scope. Initial transient loading captures are not acceptance results.",
+  "limits": [
+    "No maintainer Showcase certification",
+    "No authenticated Admin/Blog management review",
+    "No release-image or Staging deployment validation",
+    "No production deployment"
+  ],
+  "screenshots": [
+    {
+      "name": "blog-public-1440-bottom.png",
+      "sha256": "c0d6b3c672025d7f9fdbdba11814bd514c852c216a8e86c293981a67e1ebb550",
+      "bytes": 22679
+    },
+    {
+      "name": "blog-public-1440-settled-dark.png",
+      "sha256": "0ef9f0bc2775063df0376fca6485cb737322a33ea04e0156aa9b5169e9f4a4d0",
+      "bytes": 183608
+    },
+    {
+      "name": "blog-public-1440-settled-footer.png",
+      "sha256": "3547cecfeb2cab872f114a53d2779ea8270595fa44ebbbd6c7847a7811a7900f",
+      "bytes": 183787
+    },
+    {
+      "name": "blog-public-1440-settled-light.png",
+      "sha256": "3f29d57ffa6198404ad0feea391f80f8cfd23558146af56b6b7d7bd4d8f53759",
+      "bytes": 178083
+    },
+    {
+      "name": "blog-public-1440-top.png",
+      "sha256": "ffc30dbbcac7923471aee18663136e73ef0bd902269f2c5965b8e3d3863e840c",
+      "bytes": 30630
+    },
+    {
+      "name": "blog-public-390-bottom.png",
+      "sha256": "11b2f097712ab4ee81268679824150dca27a4b59afdfef1c781fa26f7fbe1fc0",
+      "bytes": 19596
+    },
+    {
+      "name": "blog-public-390-mobile-menu.png",
+      "sha256": "ec66dad09c305f2c854a301c4fa3359f852c079ebf38b721ffd976b65ffb56c2",
+      "bytes": 11519
+    },
+    {
+      "name": "blog-public-390-settled-dark.png",
+      "sha256": "dbac998189c1a68645d4889e95700f8ab2ae57bd66af866995fdc7085c818dfa",
+      "bytes": 61153
+    },
+    {
+      "name": "blog-public-390-settled-footer.png",
+      "sha256": "cbe49840bcb419db98a9302469a6da2ec69115a1e0186dc6c42782c5a33efda0",
+      "bytes": 60641
+    },
+    {
+      "name": "blog-public-390-settled-light.png",
+      "sha256": "714e38f8f6666f0c177d4cdbdf4ca8f42d70da20cde64863f8235516898987f9",
+      "bytes": 58447
+    },
+    {
+      "name": "blog-public-390-top.png",
+      "sha256": "da13e1221e738fc233f5794feda8ea066ae88dee9465a65ff39b7e0ccfaeb67d",
+      "bytes": 20934
+    },
+    {
+      "name": "blog-public-desktop-settled.png",
+      "sha256": "3ce1bd7dbaa67aa01dcd3a96ec33645b665016c06a21dc70345f1b573269f44a",
+      "bytes": 246501
+    },
+    {
+      "name": "sso-login-1440-bottom.png",
+      "sha256": "5519362bb86cd1165a3f2ef1da4b260d756e914dd0f535b183bcb193437cf73d",
+      "bytes": 590560
+    },
+    {
+      "name": "sso-login-1440-top.png",
+      "sha256": "5519362bb86cd1165a3f2ef1da4b260d756e914dd0f535b183bcb193437cf73d",
+      "bytes": 590560
+    },
+    {
+      "name": "sso-login-390-bottom.png",
+      "sha256": "fe506ae447a503f6c4d0a7435c40b57b44d6f42ff65138f27c26852b56b49f73",
+      "bytes": 84102
+    },
+    {
+      "name": "sso-login-390-top.png",
+      "sha256": "fe506ae447a503f6c4d0a7435c40b57b44d6f42ff65138f27c26852b56b49f73",
+      "bytes": 84102
+    }
+  ]
+}

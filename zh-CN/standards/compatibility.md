@@ -30,15 +30,19 @@ CLI 集成门禁在两个 Go 系列均通过 tidy、单项/组合生成、Race �
 
 | 仓库发布版本 | 正式发布关系 / 验收边界 |
 | --- | --- |
-| [Gosso v1.7.0](https://github.com/rushairer/gosso/releases/tag/v1.7.0) | Core v1.4.0；管理员 OAuth2 Client 全局治理；多架构镜像、精确身份签名、SBOM 及 Helm OCI 1.7.0 已验证 |
-| [GOSSO Admin v0.7.24](https://github.com/rushairer/gosso-admin/releases/tag/v0.7.24) | 最近正式 Admin；候选 0.7.25 在认证及发布验收通过前不列为正式基线 |
-| [Gouno Blog v1.5.26](https://github.com/rushairer/gouno-blog/releases/tag/v1.5.26) | 最近正式 Blog；后续 main 的 BFF 证据不构成新 Blog 发布 |
+| [Gosso v1.7.2](https://github.com/rushairer/gosso/releases/tag/v1.7.2) | Core v1.4.0；Client Secret 轮换持久化、并发修复及 Go 1.27.4 安全重建；多架构镜像、精确身份签名、SBOM、公开 Go Proxy 和 Helm OCI 1.7.2 已独立验证 |
+| [GOSSO Admin v0.7.25](https://github.com/rushairer/gosso-admin/releases/tag/v0.7.25) | 已通过真实签名 Gosso v1.7.2 不可变镜像兼容测试，包含跨 Owner 治理和新旧 Secret 实际验证；三个正式镜像已独立验收；人工认证及外部 Staging 按维护者发布豁免保留未验证状态 |
+| [Gouno Blog v1.6.0](https://github.com/rushairer/gouno-blog/releases/tag/v1.6.0) | Core v1.4.0；独立通过真实签名 Gosso v1.7.2 BFF 验收；生产示例引用已验证的 Admin v0.7.25；三个正式镜像已独立验收；人工认证及外部 Staging 按维护者发布豁免保留未验证状态 |
 | [@gouno/ui v0.4.9](https://github.com/rushairer/gouno-ui/releases/tag/v0.4.9) | 已发布的 Canonical UI npm 包；Showcase 改动不等于 npm 包版本变化 |
 | @gosso/client v0.9.3 | 当前消费者使用的已发布 npm Client；应用版本仍须独立验收 |
 | [gouno-agent-demo v0.3.0](https://github.com/rushairer/gouno-agent-demo/releases/tag/v0.3.0) | Core v1.4.0；Go 1.26.x / 1.27.x；Agent、SSE 及 Provider 适配测试 |
 
-这些行分别记录独立的正式产物，不代表已验证旧 Admin v0.7.24 或 Blog v1.5.26 与 Gosso v1.7.0 的组合。后续候选提交的兼容证据不得归属于这些旧 Tag。
+上述关系来自真实正式产物及其确切发布提交的验收。Admin v0.7.25、Blog v1.6.0 根据维护者明确豁免完成发布：自动化及正式产物检查通过，人工 Showcase 认证和外部 Staging 仍未验证。Release Published 不等于 Production Deployed，也不表示全部运维认证完成。参见[最终收口证据](../../docs/quality/ecosystem-release-final-2026-11.md)。
 
 Agent Demo v0.3.0 现已独立于主链发布，提交为 `ca372fc72379dbf63e6794f5d4e65af7c88e8ba7`。历史 CHANGELOG v0.2.0 没有公开 Tag 或 GitHub Release，仍不属于正式兼容基线。
 
 协调发布改变 Project Template 或 Codegen Contract 时，应依据正式产物及确切集成证据更新矩阵。Gosso、Blog 候选版本在实际发布前不得列为正式版本。
+
+## 当前 Go 安全补丁基线
+
+上文框架历史发布测试使用 Go 1.26.10/1.27.3。GO-2026-6859 之后的新构建应使用已修补的 Go 1.26.11+ 或 Go 1.27.4+；历史 CI 不构成当前工具链安全证明。消费者发行镜像使用真实修补后的编译器，无需重写既有框架或模板 Tag。

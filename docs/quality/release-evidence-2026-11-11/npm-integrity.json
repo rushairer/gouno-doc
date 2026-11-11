@@ -1,0 +1,42 @@
+[
+  {
+    "package": "@gouno/ui",
+    "version": "0.4.9",
+    "tarball_sha256": "a035b5aea1311170d11f1cbbcc48f15bc66c04d6d73a39de464893b6feee3d6e",
+    "registry_sha512_integrity": "sha512-+mOkw+VL/whS2bBK8mQlU6kMHjL5AxleOE1qO2rK3xD58KZsQ6IyO+0S/UciKklvrJIH+qz/LhMUrJ04XxWjlQ==",
+    "independent_tarball_verification_date": "2026-11-09",
+    "npm_signature_or_provenance_independently_verified": false,
+    "release_locks": {
+      "admin": {
+        "tag_source": "4545495bcdc518af65cc6c15a9695b9ef5df5e19",
+        "version": "0.4.9",
+        "integrity_matches": true
+      },
+      "blog": {
+        "tag_source": "0e8c527dcae40f931898930483fb24a00a840232",
+        "version": "0.4.9",
+        "integrity_matches": true
+      }
+    }
+  },
+  {
+    "package": "@gosso/client",
+    "version": "0.9.3",
+    "tarball_sha256": "dfd101d493186ba7de476c2661a46d753275608e88693843eb422ab475cc0ff2",
+    "registry_sha512_integrity": "sha512-weH+uD44qTxV6rGnvlaXXj9VHkulCiq6vk6NoHgd9P19eH8VL9e9g0G7aJOHcR+0nrJaD2yuYUXgAEUpI/F/Pg==",
+    "independent_tarball_verification_date": "2026-11-09",
+    "npm_signature_or_provenance_independently_verified": false,
+    "release_locks": {
+      "admin": {
+        "tag_source": "4545495bcdc518af65cc6c15a9695b9ef5df5e19",
+        "version": "0.9.3",
+        "integrity_matches": true
+      },
+      "blog": {
+        "tag_source": "0e8c527dcae40f931898930483fb24a00a840232",
+        "version": "0.9.3",
+        "integrity_matches": true
+      }
+    }
+  }
+]

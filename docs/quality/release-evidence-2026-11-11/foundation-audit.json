@@ -1,0 +1,395 @@
+{
+  "audit_unix_time": 1794390276.088408,
+  "repositories": [
+    {
+      "repo": "rushairer/gouno",
+      "version": "v1.4.0",
+      "main_sha": "13d4a0adc4b6cf343c709019159b8609ab4b5875",
+      "tag_commit_sha": "20efba0af181cb3e03c5bcb199576bfcdec1bd7f",
+      "tag_object_sha": "1ccd3bed5de725d90cd318a7f4799da2b0eec079",
+      "annotated": true,
+      "release_url": "https://github.com/rushairer/gouno/releases/tag/v1.4.0",
+      "published_at": "2026-11-05T10:20:20Z",
+      "release_source_runs": [
+        {
+          "id": 41813309775,
+          "name": "CI",
+          "head_sha": "20efba0af181cb3e03c5bcb199576bfcdec1bd7f",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno/actions/runs/41813309775"
+        }
+      ],
+      "main_runs": [
+        {
+          "id": 42600715212,
+          "name": "github_actions in /. - Update #1689824100",
+          "head_sha": "13d4a0adc4b6cf343c709019159b8609ab4b5875",
+          "head_branch": "main",
+          "event": "dynamic",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno/actions/runs/42600715212"
+        },
+        {
+          "id": 42600715401,
+          "name": "go_modules in /. - Update #1689824096",
+          "head_sha": "13d4a0adc4b6cf343c709019159b8609ab4b5875",
+          "head_branch": "main",
+          "event": "dynamic",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno/actions/runs/42600715401"
+        },
+        {
+          "id": 42018433409,
+          "name": "CI",
+          "head_sha": "13d4a0adc4b6cf343c709019159b8609ab4b5875",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno/actions/runs/42018433409"
+        }
+      ],
+      "scope": "Existing immutable release and Actions metadata read-only rechecked; not republished or newly retested in this closeout"
+    },
+    {
+      "repo": "rushairer/gouno-template",
+      "version": "v1.4.0",
+      "main_sha": "01f227f34f6c056998a006bb8320f6187822aaf4",
+      "tag_commit_sha": "9f0cba9c8a6be6331f48596c83663efbec5490a2",
+      "tag_object_sha": "75a4d30b3a3eca0dcda339daf1173eaac4c6ef31",
+      "annotated": true,
+      "release_url": "https://github.com/rushairer/gouno-template/releases/tag/v1.4.0",
+      "published_at": "2026-11-05T10:23:01Z",
+      "release_source_runs": [
+        {
+          "id": 41817614153,
+          "name": "CI",
+          "head_sha": "9f0cba9c8a6be6331f48596c83663efbec5490a2",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-template/actions/runs/41817614153"
+        }
+      ],
+      "main_runs": [
+        {
+          "id": 42011677505,
+          "name": "CI",
+          "head_sha": "01f227f34f6c056998a006bb8320f6187822aaf4",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-template/actions/runs/42011677505"
+        }
+      ],
+      "scope": "Existing immutable release and Actions metadata read-only rechecked; not republished or newly retested in this closeout"
+    },
+    {
+      "repo": "rushairer/gouno-cli",
+      "version": "v1.3.0",
+      "main_sha": "a3930d1391ce3aedb8661eef472555611fd54540",
+      "tag_commit_sha": "087c00a523a6ec8c512d5eb9c65f657f6be8d5fb",
+      "tag_object_sha": "b898d5e921fb9a001e03a65b1b880293794fc606",
+      "annotated": true,
+      "release_url": "https://github.com/rushairer/gouno-cli/releases/tag/v1.3.0",
+      "published_at": "2026-11-05T10:26:00Z",
+      "release_source_runs": [
+        {
+          "id": 42010113946,
+          "name": "CI",
+          "head_sha": "087c00a523a6ec8c512d5eb9c65f657f6be8d5fb",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-cli/actions/runs/42010113946"
+        }
+      ],
+      "main_runs": [
+        {
+          "id": 42705436269,
+          "name": "go_modules in /. - Update #1691490947",
+          "head_sha": "a3930d1391ce3aedb8661eef472555611fd54540",
+          "head_branch": "main",
+          "event": "dynamic",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-cli/actions/runs/42705436269"
+        },
+        {
+          "id": 42705435681,
+          "name": "github_actions in /. - Update #1691490968",
+          "head_sha": "a3930d1391ce3aedb8661eef472555611fd54540",
+          "head_branch": "main",
+          "event": "dynamic",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-cli/actions/runs/42705435681"
+        },
+        {
+          "id": 42011734513,
+          "name": "CI",
+          "head_sha": "a3930d1391ce3aedb8661eef472555611fd54540",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-cli/actions/runs/42011734513"
+        }
+      ],
+      "scope": "Existing immutable release and Actions metadata read-only rechecked; not republished or newly retested in this closeout"
+    },
+    {
+      "repo": "rushairer/gouno-ui",
+      "version": "v0.4.9",
+      "main_sha": "ad29789e3583200deae486dc301d8c06b9c8ce2a",
+      "tag_commit_sha": "4495147ae0b9807d2e5c9137187cfdc3e906cceb",
+      "tag_object_sha": "4e2b25551bdb1f08310bfa5a9c51237512c9ce72",
+      "annotated": true,
+      "release_url": "https://github.com/rushairer/gouno-ui/releases/tag/v0.4.9",
+      "published_at": "2026-09-22T11:20:07Z",
+      "release_source_runs": [
+        {
+          "id": 35720568565,
+          "name": "Publish npm release",
+          "head_sha": "4495147ae0b9807d2e5c9137187cfdc3e906cceb",
+          "head_branch": "v0.4.9",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/35720568565"
+        },
+        {
+          "id": 35719924655,
+          "name": "CI",
+          "head_sha": "4495147ae0b9807d2e5c9137187cfdc3e906cceb",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/35719924655"
+        },
+        {
+          "id": 35719924649,
+          "name": "Publish Showcase to GitHub Pages",
+          "head_sha": "4495147ae0b9807d2e5c9137187cfdc3e906cceb",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/35719924649"
+        },
+        {
+          "id": 35719924741,
+          "name": "Gosso Admin Consumer Parity",
+          "head_sha": "4495147ae0b9807d2e5c9137187cfdc3e906cceb",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/35719924741"
+        },
+        {
+          "id": 35719924713,
+          "name": "Canonical Visual Golden Smoke",
+          "head_sha": "4495147ae0b9807d2e5c9137187cfdc3e906cceb",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/35719924713"
+        },
+        {
+          "id": 35719924659,
+          "name": "Blog Consumer Parity",
+          "head_sha": "4495147ae0b9807d2e5c9137187cfdc3e906cceb",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/35719924659"
+        }
+      ],
+      "main_runs": [
+        {
+          "id": 42784054917,
+          "name": "Blog Consumer Parity",
+          "head_sha": "ad29789e3583200deae486dc301d8c06b9c8ce2a",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/42784054917"
+        },
+        {
+          "id": 42784055222,
+          "name": "Canonical Visual Golden Smoke",
+          "head_sha": "ad29789e3583200deae486dc301d8c06b9c8ce2a",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/42784055222"
+        },
+        {
+          "id": 42784054987,
+          "name": "Gosso Admin Consumer Parity",
+          "head_sha": "ad29789e3583200deae486dc301d8c06b9c8ce2a",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/42784054987"
+        },
+        {
+          "id": 42784055268,
+          "name": "CI",
+          "head_sha": "ad29789e3583200deae486dc301d8c06b9c8ce2a",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/42784055268"
+        },
+        {
+          "id": 42784054961,
+          "name": "Publish Showcase to GitHub Pages",
+          "head_sha": "ad29789e3583200deae486dc301d8c06b9c8ce2a",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-ui/actions/runs/42784054961"
+        }
+      ],
+      "scope": "Existing immutable release and Actions metadata read-only rechecked; not republished or newly retested in this closeout"
+    },
+    {
+      "repo": "rushairer/gouno-doc",
+      "version": "v1.3.1",
+      "main_sha": "db1ffc4d2ea933f74f18308a21f0561907114bb7",
+      "tag_commit_sha": "fad499f7f28ff2e86d03d5c26ae6de127222d915",
+      "tag_object_sha": "b3797d0260806d8b8ea84a72d8b223070116c54e",
+      "annotated": true,
+      "release_url": "https://github.com/rushairer/gouno-doc/releases/tag/v1.3.1",
+      "published_at": "2026-11-05T11:03:35Z",
+      "release_source_runs": [
+        {
+          "id": 42588199109,
+          "name": "github_actions in /. - Update #1689514368",
+          "head_sha": "fad499f7f28ff2e86d03d5c26ae6de127222d915",
+          "head_branch": "main",
+          "event": "dynamic",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-doc/actions/runs/42588199109"
+        },
+        {
+          "id": 42015368871,
+          "name": "Documentation CI",
+          "head_sha": "fad499f7f28ff2e86d03d5c26ae6de127222d915",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-doc/actions/runs/42015368871"
+        }
+      ],
+      "main_runs": [
+        {
+          "id": 42997051605,
+          "name": "Independent Release Artifact Verification",
+          "head_sha": "db1ffc4d2ea933f74f18308a21f0561907114bb7",
+          "head_branch": "main",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-doc/actions/runs/42997051605"
+        },
+        {
+          "id": 42996028182,
+          "name": "Independent Release Artifact Verification",
+          "head_sha": "db1ffc4d2ea933f74f18308a21f0561907114bb7",
+          "head_branch": "main",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-doc/actions/runs/42996028182"
+        },
+        {
+          "id": 42995976824,
+          "name": "Documentation CI",
+          "head_sha": "db1ffc4d2ea933f74f18308a21f0561907114bb7",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-doc/actions/runs/42995976824"
+        }
+      ],
+      "scope": "Existing immutable release and Actions metadata read-only rechecked; not republished or newly retested in this closeout"
+    },
+    {
+      "repo": "rushairer/gouno-agent-demo",
+      "version": "v0.3.0",
+      "main_sha": "735794f1982a0f969e5b956a929f5e9a92440e86",
+      "tag_commit_sha": "ca372fc72379dbf63e6794f5d4e65af7c88e8ba7",
+      "tag_object_sha": "18bf25e95bccc3dda0e6bae0cb680abff7bfc748",
+      "annotated": true,
+      "release_url": "https://github.com/rushairer/gouno-agent-demo/releases/tag/v0.3.0",
+      "published_at": "2026-11-05T10:32:46Z",
+      "release_source_runs": [
+        {
+          "id": 42011180831,
+          "name": "CI",
+          "head_sha": "ca372fc72379dbf63e6794f5d4e65af7c88e8ba7",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-agent-demo/actions/runs/42011180831"
+        }
+      ],
+      "main_runs": [
+        {
+          "id": 42816824628,
+          "name": "github_actions in /. - Update #1692931517",
+          "head_sha": "735794f1982a0f969e5b956a929f5e9a92440e86",
+          "head_branch": "main",
+          "event": "dynamic",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-agent-demo/actions/runs/42816824628"
+        },
+        {
+          "id": 42816825377,
+          "name": "go_modules in /. - Update #1692931527",
+          "head_sha": "735794f1982a0f969e5b956a929f5e9a92440e86",
+          "head_branch": "main",
+          "event": "dynamic",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-agent-demo/actions/runs/42816825377"
+        },
+        {
+          "id": 42014301881,
+          "name": "CI",
+          "head_sha": "735794f1982a0f969e5b956a929f5e9a92440e86",
+          "head_branch": "main",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rushairer/gouno-agent-demo/actions/runs/42014301881"
+        }
+      ],
+      "scope": "Existing immutable release and Actions metadata read-only rechecked; not republished or newly retested in this closeout"
+    }
+  ]
+}
