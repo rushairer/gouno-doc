@@ -30,15 +30,19 @@ A custom project template does not have to depend on the Gouno runtime or enable
 
 | Repository release | Published relationship / acceptance boundary |
 | --- | --- |
-| [Gosso v1.7.0](https://github.com/rushairer/gosso/releases/tag/v1.7.0) | Core v1.4.0; global administrator OAuth2 client governance; verified multi-arch image, exact-identity signature, SBOMs and Helm OCI 1.7.0 |
-| [GOSSO Admin v0.7.24](https://github.com/rushairer/gosso-admin/releases/tag/v0.7.24) | Last released Admin; candidate 0.7.25 is excluded until certification and release acceptance pass |
-| [Gouno Blog v1.5.26](https://github.com/rushairer/gouno-blog/releases/tag/v1.5.26) | Last released Blog; later main-branch BFF evidence does not establish a new Blog release |
+| [Gosso v1.7.2](https://github.com/rushairer/gosso/releases/tag/v1.7.2) | Core v1.4.0; persisted Client Secret rotation, concurrency repairs and patched Go 1.27.4; independently verified multi-arch image, exact-identity signature, SBOMs, public Go Proxy and Helm OCI 1.7.2 |
+| [GOSSO Admin v0.7.25](https://github.com/rushairer/gosso-admin/releases/tag/v0.7.25) | Signed immutable Gosso v1.7.2 compatibility passes, including cross-owner governance and actual secret replacement; all three formal image artifacts independently verified; manual certification/Staging remain unverified under owner publication exception |
+| [Gouno Blog v1.6.0](https://github.com/rushairer/gouno-blog/releases/tag/v1.6.0) | Core v1.4.0; independent BFF acceptance against actual signed Gosso v1.7.2; verified Admin v0.7.25 production references; three formal images independently verified; manual certification/Staging remain unverified under owner publication exception |
 | [@gouno/ui v0.4.9](https://github.com/rushairer/gouno-ui/releases/tag/v0.4.9) | Published canonical UI npm package; Showcase-only changes do not imply a new package version |
 | @gosso/client v0.9.3 | Published npm client used by the current consumers; application release acceptance remains separate |
 | [gouno-agent-demo v0.3.0](https://github.com/rushairer/gouno-agent-demo/releases/tag/v0.3.0) | Core v1.4.0; Go 1.26.x / 1.27.x; Agent, SSE and provider adapter tests |
 
-These rows are independent released artifacts. They do not certify the previously released Admin v0.7.24 or Blog v1.5.26 against Gosso v1.7.0. Later candidate-commit compatibility evidence must not be attributed to those older tags.
+These rows describe actual published artifacts and their exact release-source acceptance. Admin v0.7.25 and Blog v1.6.0 were published under an explicit maintainer exception: automated source and artifact checks passed, while manual Showcase certification and external Staging remain unverified. Release Published does not imply Production Deployed or full operational certification. See the [final closeout evidence](../docs/quality/ecosystem-release-final-2026-11.md).
 
 Agent Demo v0.3.0 is now published independently of the main chain at `ca372fc72379dbf63e6794f5d4e65af7c88e8ba7`. Its historical changelog entry v0.2.0 had no public tag or GitHub Release and remains excluded from the formal baseline.
 
 When a coordinated release changes project-template or Codegen contracts, update this matrix from published artifacts and exact integration evidence. Do not promote Gosso or Blog candidates here before their releases exist.
+
+## Current Go security patch baseline
+
+The historical framework release tests above used Go 1.26.10/1.27.3. New builds must use patched Go 1.26.11+ or Go 1.27.4+ after GO-2026-6859; historical CI is not current toolchain security clearance. Consumer release builds use the actual patched compiler without rewriting existing framework/template tags.

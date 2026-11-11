@@ -1,0 +1,70 @@
+{
+  "repo": "rushairer/gosso",
+  "tag": "v1.7.2",
+  "sha": "95fde424eff854e12d95d73a00526b11ea186339",
+  "release_url": "https://github.com/rushairer/gosso/releases/tag/v1.7.2",
+  "assets": [
+    {
+      "name": "CHANGELOG.md",
+      "sha256": "137eefded94895924f273781bdf8e778aaa407ac9cf3df6bce0bfeebe8e0c337",
+      "api_digest_verified": true
+    },
+    {
+      "name": "gosso-sbom.cdx.json",
+      "sha256": "79a895ff5b1e653109c02be4ba3f33a5af649d827a752581331a534527edf377",
+      "api_digest_verified": true
+    },
+    {
+      "name": "gosso-sbom.spdx.json",
+      "sha256": "72b75f855c5bf25c5777cb8cdc0863a7d2bc71e743f129dafea4863133cf9c45",
+      "api_digest_verified": true
+    }
+  ],
+  "images": [
+    {
+      "kind": "gosso",
+      "image": "ghcr.io/rushairer/gosso@sha256:bf398c6c2129da2f68c030dece3ceb52f8f5a7a6036a58b797c8e3f0619b5e90",
+      "tag_resolves_to_digest": true,
+      "cosign_identity": "https://github.com/rushairer/gosso/.github/workflows/release.yml@refs/tags/v1.7.2",
+      "cosign_verified": true,
+      "sbom_formats": [
+        "CycloneDX",
+        "SPDX"
+      ],
+      "platforms": [
+        {
+          "arch": "amd64",
+          "digest": "sha256:95e4a734208a1298b2318f63a4434c265d1306b3f35c2c07c1bf4483434f9aeb",
+          "source_sha": "95fde424eff854e12d95d73a00526b11ea186339",
+          "qualification": "Local-directory build: declared VCS source/revision cross-checked in BuildKit metadata and root request args; not a Git material content-hash claim."
+        },
+        {
+          "arch": "arm64",
+          "digest": "sha256:1bff5205c98691103aba6b04c86ba7bf0bfc74e6b16281307d094dce1a6caa4d",
+          "source_sha": "95fde424eff854e12d95d73a00526b11ea186339",
+          "qualification": "Local-directory build: declared VCS source/revision cross-checked in BuildKit metadata and root request args; not a Git material content-hash claim."
+        }
+      ]
+    }
+  ],
+  "manual_certification": "not applicable to backend",
+  "staging": "not verified; maintainer publication exception",
+  "production_deployed": false,
+  "helm_module": {
+    "source_sha": "95fde424eff854e12d95d73a00526b11ea186339",
+    "public_go_proxy_verified": true,
+    "helm_oci_verified": true,
+    "helm_manifest_digest": "sha256:1d1bc43e874d2c23e671a4972956e098166a564329dcbbd25acf224dd3f44ad9",
+    "helm_chart_blob_digest": "sha256:03f9bd1e53aaa978894259bd051ee6471b33b978076165131bf6e59457d028ba"
+  },
+  "publication_workflow": {
+    "id": 42993412418,
+    "url": "https://github.com/rushairer/gosso/actions/runs/42993412418",
+    "sha": "95fde424eff854e12d95d73a00526b11ea186339"
+  },
+  "independent_verifier": {
+    "repo": "rushairer/gouno-doc",
+    "source_sha": "db1ffc4d2ea933f74f18308a21f0561907114bb7",
+    "run_id": "42996028182"
+  }
+}
