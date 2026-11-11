@@ -20,6 +20,9 @@ def hashcheck(data,digest):
  assert 'sha256:'+hashlib.sha256(data).hexdigest()==digest,'content hash mismatch'
 ref=json.loads(api(f'repos/{a.repo}/git/ref/tags/{a.tag}'));assert ref['object']['type']=='tag';annotated=json.loads(api(f'repos/{a.repo}/git/tags/{ref["object"]["sha"]}'));assert annotated['object']['type']=='commit' and annotated['object']['sha']==a.sha
 release=json.loads(api(f'repos/{a.repo}/releases/tags/{a.tag}'));assert not release['draft'] and not release['prerelease'];(root/'release.json').write_text(json.dumps(release,indent=2))
+runs=json.loads(api(f'repos/{a.repo}/actions/runs?per_page=50'))['workflow_runs']
+published=[r for r in runs if r['head_sha']==a.sha and r['head_branch']==a.tag and r['path'].endswith('/'+a.workflow)]
+assert published and published[0]['status']=='completed' and published[0]['conclusion']=='success','Tagged publication workflow has not succeeded'
 assets=[]
 for asset in release['assets']:
  name=asset['name'];assert pathlib.PurePath(name).name==name
@@ -93,4 +96,5 @@ if a.repo=='rushairer/gosso':
  with __import__('tarfile').open(fileobj=__import__('io').BytesIO(archive),mode='r:gz') as t:
   chart=t.extractfile('gosso/Chart.yaml').read().decode();assert '\nversion: 1.7.2\n' in '\n'+chart and '\nappVersion: 1.7.2\n' in chart.replace('"','');(root/'helm-chart.yaml').write_text(chart)
  helm_receipt={'source_sha':source,'public_go_proxy_verified':True,'helm_oci_verified':True,'helm_manifest_digest':'sha256:'+hashlib.sha256(data).hexdigest(),'helm_chart_blob_digest':digest};(root/'helm-module-verification.json').write_text(json.dumps(helm_receipt,indent=2));receipt['helm_module']=helm_receipt
-(root/'verification.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps({'release':release['html_url'],'images':[x['image'] for x in results],'verified':True}))
+receipt['publication_workflow']={'id':published[0]['id'],'url':published[0]['html_url'],'sha':a.sha};receipt['independent_verifier']={'repo':os.environ.get('GITHUB_REPOSITORY'),'source_sha':os.environ.get('GITHUB_SHA'),'run_id':os.environ.get('GITHUB_RUN_ID')}
+(root/'verification.json').write_text(json.dumps(receipt,indent=2)+'\n');print('GOUNO_VERIFICATION_JSON='+json.dumps(receipt,separators=(',',':')));print(json.dumps({'release':release['html_url'],'images':[x['image'] for x in results],'verified':True}))
