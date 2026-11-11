@@ -1,0 +1,66 @@
+name: Independent Release Artifact Verification
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: Released application to verify
+        type: choice
+        required: true
+        options: [gosso, gosso-admin, gouno-blog]
+      source_sha:
+        description: Exact accepted release commit SHA
+        type: string
+        required: true
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout independent verifier
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install Cosign verifier
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+      - name: Independently verify published artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_REPO: ${{ inputs.repository }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          set -euo pipefail
+          case "$TARGET_REPO" in
+            gosso)
+              RELEASE_TAG=v1.7.2
+              RELEASE_WORKFLOW=release.yml
+              RELEASE_IMAGES=gosso=ghcr.io/rushairer/gosso
+              ;;
+            gosso-admin)
+              RELEASE_TAG=v0.7.25
+              RELEASE_WORKFLOW=images.yml
+              RELEASE_IMAGES=frontend=ghcr.io/rushairer/gosso-admin-frontend,frontend-identity-admin=ghcr.io/rushairer/gosso-admin-frontend-identity-admin,seed=ghcr.io/rushairer/gosso-admin-seed
+              ;;
+            gouno-blog)
+              RELEASE_TAG=v1.6.0
+              RELEASE_WORKFLOW=publish-images.yml
+              RELEASE_IMAGES=backend=ghcr.io/rushairer/gouno-blog-backend,frontend=ghcr.io/rushairer/gouno-blog-frontend,seed=ghcr.io/rushairer/gouno-blog-seed
+              ;;
+            *) exit 1 ;;
+          esac
+          python3 scripts/verify-release-artifacts-2026-11.py \
+            --repo "rushairer/$TARGET_REPO" --tag "$RELEASE_TAG" \
+            --sha "$SOURCE_SHA" --workflow "$RELEASE_WORKFLOW" \
+            --images "$RELEASE_IMAGES" --out release-evidence
+      - name: Retain independent verification evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: independent-release-${{ inputs.repository }}-${{ github.run_id }}
+          path: release-evidence/
+          retention-days: 90
