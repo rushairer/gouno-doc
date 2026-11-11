@@ -80,7 +80,8 @@ for item in a.images.split(','):
    request=pred['buildDefinition']['externalParameters']['request'];args=request['args'];rargs=request['root']['request']['args'];assert rargs['vcs:source']==expected and rargs['vcs:revision']==a.sha
    
    if a.repo!='rushairer/gosso':assert args['label:org.opencontainers.image.source']==expected and args['label:org.opencontainers.image.revision']==a.sha
-   qualifier='Local-directory build: declared VCS source/revision cross-checked in BuildKit metadata, request args and OCI labels; not a Git material content-hash claim.'
+   fields='BuildKit metadata and root request args' if a.repo=='rushairer/gosso' else 'BuildKit metadata, root request args and OCI labels'
+   qualifier=f'Local-directory build: declared VCS source/revision cross-checked in {fields}; not a Git material content-hash claim.'
   else:
    assert any(a.repo in x.get('uri','') and a.sha in x.get('digest',{}).values() for x in pred.get('materials',[]));qualifier='Exact Git material source SHA verified.'
   (root/f'{kind}-provenance-{arch}.json').write_bytes(data);proofs.append({'arch':arch,'digest':desc['digest'],'source_sha':a.sha,'qualification':qualifier})
