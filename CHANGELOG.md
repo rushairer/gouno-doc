@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Documentation
+
+- Link English and Chinese entrypoints to the Blog-owned source-verified BFF/SSO architecture and clarify that dated release evidence is not a current production certification. Keep normative protocols in their implementation repositories.
+
 ### Added
 
 - Preserve independent final-release receipts for Gosso v1.7.2, Admin v0.7.25 and Blog v1.6.0, including exact identities/digests, SBOM/provenance checks and explicit manual/Staging publication exceptions.

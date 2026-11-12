@@ -29,6 +29,12 @@ The official template is a reference implementation. Its Gin/Cobra/Viper choices
 - [Release Standard](./standards/release.md) — immutable release and branch-protection gate
 - [Compatibility Matrix](./standards/compatibility.md) — released repository combinations
 
+## Product architecture and point-in-time release evidence
+
+- [Verified Blog / Blog Admin / GOSSO As-Is architecture and SVG](https://github.com/rushairer/gouno-blog/blob/main/docs/architecture/README.md) — owned by the Blog implementation repository; not a Gouno Core architecture requirement.
+- [November 2026 ecosystem release evidence](docs/quality/ecosystem-release-final-2026-11.md) — **dated publication snapshot**. Manual Showcase certification, external Staging and production rollout are not inferred from release publication.
+- [Current compatibility matrix](standards/compatibility.md) — updated from formally published artifacts, not branch heads. No duplicate architecture diagrams or OAuth client protocol definitions are maintained here.
+
 ## Normative contracts
 
 User guides in this repository explain the contracts but do not redefine them:
