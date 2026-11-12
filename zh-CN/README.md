@@ -32,6 +32,7 @@ gouno-doc       用户指南 + 工程/兼容性规范
 ## 业务架构与历史发布证据
 
 - [Blog / Blog Admin / GOSSO 已核对的现行代码架构及 SVG](https://github.com/rushairer/gouno-blog/blob/main/docs/architecture/README.md) — 由 Blog 实现仓库负责，不属于 Gouno Core 强制架构。
+- [2026-11-12 跨仓文档治理清单](../docs/quality/documentation-hygiene-2026-11-12.md) — 现行规范/历史任务分类及 doc/docs 清理结果。
 - [2026 年 11 月生态发布验收记录](../docs/quality/ecosystem-release-final-2026-11.md) — **有日期的历史发布快照**；发布成功不等于人工 Showcase 认证、外部 Staging 或生产部署已验收。
 - [当前兼容矩阵](standards/compatibility.md) — 以正式发布产物为准，而非分支 HEAD。本仓库不再复制另一套 OAuth 客户端协议或架构图。
 

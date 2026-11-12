@@ -32,6 +32,7 @@ The official template is a reference implementation. Its Gin/Cobra/Viper choices
 ## Product architecture and point-in-time release evidence
 
 - [Verified Blog / Blog Admin / GOSSO As-Is architecture and SVG](https://github.com/rushairer/gouno-blog/blob/main/docs/architecture/README.md) — owned by the Blog implementation repository; not a Gouno Core architecture requirement.
+- [Cross-repository documentation hygiene audit, 2026-11-12](docs/quality/documentation-hygiene-2026-11-12.md) — current contracts versus historical plans; doc/docs consolidation results.
 - [November 2026 ecosystem release evidence](docs/quality/ecosystem-release-final-2026-11.md) — **dated publication snapshot**. Manual Showcase certification, external Staging and production rollout are not inferred from release publication.
 - [Current compatibility matrix](standards/compatibility.md) — updated from formally published artifacts, not branch heads. No duplicate architecture diagrams or OAuth client protocol definitions are maintained here.
 

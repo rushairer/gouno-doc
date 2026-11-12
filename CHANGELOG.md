@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Documentation
 
 - Link English and Chinese entrypoints to the Blog-owned source-verified BFF/SSO architecture and clarify that dated release evidence is not a current production certification. Keep normative protocols in their implementation repositories.
+- Record the 2026-11-12 ten-repository documentation hygiene review: consolidated two dual doc/docs trees, reclassified historical TODOs/proposals, removed obsolete placeholders and preserved signed release evidence.
 
 ### Added
 
